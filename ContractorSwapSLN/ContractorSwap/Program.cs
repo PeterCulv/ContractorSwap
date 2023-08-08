@@ -1,4 +1,6 @@
+
 namespace ContractorSwap
+
 {
     public class Program
     {
