@@ -44,7 +44,7 @@ namespace ContractorSwap.Data
                     Date = new DateTime(2019, 05, 09),
                     Location = "666 Elm Street, Aurora, IL",
                     Description = "Ceiling fan installation: Master Bedroom",
-                    PosterId = 1
+                    ContractorId = 1
                 },
                 new JobListingModel()
                 {
@@ -53,7 +53,7 @@ namespace ContractorSwap.Data
                     Date = new DateTime(2023, 06, 09),
                     Location = "1111 Hampton Hills Ct., Hamptons, CT",
                     Description = "Install a hot tub for a Chihuaha",
-                    PosterId = 2
+                    ContractorId = 2
                 });
             modelBuilder.Entity<ApplicationModel>().HasData(
                 new ApplicationModel()

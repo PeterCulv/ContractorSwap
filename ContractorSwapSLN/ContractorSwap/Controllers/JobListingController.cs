@@ -10,86 +10,87 @@ using ContractorSwap.Models;
 
 namespace ContractorSwap.Controllers
 {
-    public class ContractorController : Controller
+    public class JobListingController : Controller
     {
         private readonly DataContext _context;
 
-        public ContractorController(DataContext context)
+        public JobListingController(DataContext context)
         {
             _context = context;
         }
 
-        // GET: Contractor
+        // GET: JobListing
         public async Task<IActionResult> Index()
         {
-              return _context.Contractors != null ? 
-                          View(await _context.Contractors.ToListAsync()) :
-                          Problem("Entity set 'DataContext.Contractors'  is null.");
+              return _context.Jobs != null ? 
+                          View(await _context.Jobs.ToListAsync()) :
+                          Problem("Entity set 'DataContext.Jobs'  is null.");
         }
 
-        // GET: Contractor/Details/5
+        // GET: JobListing/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Contractors == null)
+            if (id == null || _context.Jobs == null)
             {
                 return NotFound();
             }
 
-            var contractorModel = await _context.Contractors.Include(j=> j.JobListings).FirstOrDefaultAsync(m => m.Id == id);
-            if (contractorModel == null)
+            var jobListingModel = await _context.Jobs
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (jobListingModel == null)
             {
                 return NotFound();
             }
 
-            return View(contractorModel);
+            return View(jobListingModel);
         }
 
-        // GET: Contractor/Create
+        // GET: JobListing/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Contractor/Create
+        // POST: JobListing/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Specialties,Location,UserName,Password")] ContractorModel contractorModel)
+        public async Task<IActionResult> Create([Bind("Id,Name,Date,Location,Description,PosterId,AcceptedId")] JobListingModel jobListingModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(contractorModel);
+                _context.Add(jobListingModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(contractorModel);
+            return View(jobListingModel);
         }
 
-        // GET: Contractor/Edit/5
+        // GET: JobListing/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Contractors == null)
+            if (id == null || _context.Jobs == null)
             {
                 return NotFound();
             }
 
-            var contractorModel = await _context.Contractors.FindAsync(id);
-            if (contractorModel == null)
+            var jobListingModel = await _context.Jobs.FindAsync(id);
+            if (jobListingModel == null)
             {
                 return NotFound();
             }
-            return View(contractorModel);
+            return View(jobListingModel);
         }
 
-        // POST: Contractor/Edit/5
+        // POST: JobListing/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Specialties,Location,UserName,Password")] ContractorModel contractorModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Date,Location,Description,PosterId,AcceptedId")] JobListingModel jobListingModel)
         {
-            if (id != contractorModel.Id)
+            if (id != jobListingModel.Id)
             {
                 return NotFound();
             }
@@ -98,12 +99,12 @@ namespace ContractorSwap.Controllers
             {
                 try
                 {
-                    _context.Update(contractorModel);
+                    _context.Update(jobListingModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ContractorModelExists(contractorModel.Id))
+                    if (!JobListingModelExists(jobListingModel.Id))
                     {
                         return NotFound();
                     }
@@ -114,49 +115,49 @@ namespace ContractorSwap.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(contractorModel);
+            return View(jobListingModel);
         }
 
-        // GET: Contractor/Delete/5
+        // GET: JobListing/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Contractors == null)
+            if (id == null || _context.Jobs == null)
             {
                 return NotFound();
             }
 
-            var contractorModel = await _context.Contractors
+            var jobListingModel = await _context.Jobs
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (contractorModel == null)
+            if (jobListingModel == null)
             {
                 return NotFound();
             }
 
-            return View(contractorModel);
+            return View(jobListingModel);
         }
 
-        // POST: Contractor/Delete/5
+        // POST: JobListing/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Contractors == null)
+            if (_context.Jobs == null)
             {
-                return Problem("Entity set 'DataContext.Contractors'  is null.");
+                return Problem("Entity set 'DataContext.Jobs'  is null.");
             }
-            var contractorModel = await _context.Contractors.FindAsync(id);
-            if (contractorModel != null)
+            var jobListingModel = await _context.Jobs.FindAsync(id);
+            if (jobListingModel != null)
             {
-                _context.Contractors.Remove(contractorModel);
+                _context.Jobs.Remove(jobListingModel);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ContractorModelExists(int id)
+        private bool JobListingModelExists(int id)
         {
-          return (_context.Contractors?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Jobs?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

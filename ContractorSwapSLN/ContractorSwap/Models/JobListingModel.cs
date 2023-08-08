@@ -24,8 +24,9 @@ namespace ContractorSwap.Models
         public string Description { get; set; }
 
         
-        [ForeignKey("posterId")]
-        public int PosterId { get; set; }
+        [ForeignKey("ContractorId")]
+        public int ContractorId { get; set; }
+        public ContractorModel Contractor { get; set; }
 
 
         /// <summary>

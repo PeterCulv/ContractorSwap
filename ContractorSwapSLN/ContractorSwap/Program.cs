@@ -1,4 +1,7 @@
 
+using ContractorSwap.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 namespace ContractorSwap
 
 {
@@ -7,9 +10,11 @@ namespace ContractorSwap
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<DataContext>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<DataContext>();
 
             var app = builder.Build();
 

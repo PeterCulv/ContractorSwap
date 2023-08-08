@@ -1,0 +1,70 @@
+﻿@model ContractorSwap.Models.ContractorModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ContractorModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Specialties)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Specialties)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+    </dl>
+</div>
+<div class="contain-reviews">
+    <h4>Job Postings</h4>
+    @foreach (JobListingModel job in Model.JobListings)
+    {
+        <div>
+            <div>
+                <p>Date Posted: @Html.DisplayFor(modelItem => job.Date)</p>
+            </div>
+            <div>
+                <p>Location: @Html.DisplayFor(modelItem => job.Location)</p>
+            </div>
+            <div>
+                <p>Job: @Html.DisplayFor(modelItem => job.Name)</p>
+            </div>
+            <div>
+                <p>Task: @Html.DisplayFor(modelItem => job.Description)</p>
+            </div>
+        </div>
+        <br />
+
+    }
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
