@@ -16,6 +16,26 @@ namespace ContractorSwap.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ContractorModel>().HasData(
+                new ContractorModel()
+                {
+                    Id = 1,
+                    Name = "John Deere",
+                    Specialties = "Landscaping",
+                    Location = "Grand Detour, Illinois",
+                    UserName = "johndeere123",
+                    Password = "deerebutstillgoated"
+                },
+                new ContractorModel()
+                {
+                    Id = 2,
+                    Name = "Francis Charlery",
+                    Specialties = "Carpenrty",
+                    Location = "Hartford, Connecticut",
+                    UserName = "frantheman",
+                    Password = "francis456"
+
+                });
             modelBuilder.Entity<JobListingModel>().HasData(
                 new JobListingModel()
                 {
