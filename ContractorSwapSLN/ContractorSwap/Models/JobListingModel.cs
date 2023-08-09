@@ -28,13 +28,6 @@ namespace ContractorSwap.Models
         public int ContractorId { get; set; }
         public ContractorModel Contractor { get; set; }
 
-
-        /// <summary>
-        /// not in google sheet, added this to capture "accepted bid" from the application model 
-    
-        [ForeignKey("accepterId")]
-        public int AcceptedId { get; set; }
-
         public virtual IEnumerable<ApplicationModel>? Applications { get; set; }    
     }
 }

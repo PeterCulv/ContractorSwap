@@ -60,16 +60,26 @@ namespace ContractorSwap.Data
                 {
                     Id = 1,
                     Bid = 750.00,
-                    JobListingId = 1,
-                    SeekerId = 2
+                   /* JobListingId = 1,*/
+                    ContractorId = 2
                 },
                 new ApplicationModel()
                 {
                     Id = 2,
                     Bid = 5800.00,
-                    JobListingId = 2,
-                    SeekerId = 1
+                  /*  JobListingId = 2,*/
+                    ContractorId = 1
                 });
+           /* modelBuilder.Entity<ApplicationModel>()
+                .HasOne(a => a.JobListing)
+                .WithMany()
+                .HasForeignKey(a => a.JobListingId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<ApplicationModel>()
+                .HasOne(a => a.Contractor)
+                .WithMany()
+                .HasForeignKey(a => a.ContractorId);*/
         }
 
     }

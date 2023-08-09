@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ContractorSwap.Models
@@ -10,12 +11,16 @@ namespace ContractorSwap.Models
 
         [Required]
         public double Bid { get; set; }
-
+        public bool accepted { get; set; } = false;
+        /*
         [ForeignKey("JobListingId")]
         public int JobListingId { get; set; }
-
-        [ForeignKey("SeekerId")]
-        public int SeekerId { get; set; }   
+        public JobListingModel JobListing { get; set; }
+        */
+        [ForeignKey("ContractorId")]
+        public int ContractorId { get; set; }   
+        public ContractorModel Contractor { get; set; }
+        
 
        
     }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContractorSwap.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230808182956_hello")]
-    partial class hello
+    [Migration("20230809152138_hiyhjjj")]
+    partial class hiyhjjj
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,16 +36,18 @@ namespace ContractorSwap.Migrations
                     b.Property<double>("Bid")
                         .HasColumnType("float");
 
-                    b.Property<int>("JobListingId")
+                    b.Property<int>("ContractorId")
                         .HasColumnType("int");
 
                     b.Property<int?>("JobListingModelId")
                         .HasColumnType("int");
 
-                    b.Property<int>("SeekerId")
-                        .HasColumnType("int");
+                    b.Property<bool>("accepted")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ContractorId");
 
                     b.HasIndex("JobListingModelId");
 
@@ -56,15 +58,15 @@ namespace ContractorSwap.Migrations
                         {
                             Id = 1,
                             Bid = 750.0,
-                            JobListingId = 1,
-                            SeekerId = 2
+                            ContractorId = 2,
+                            accepted = false
                         },
                         new
                         {
                             Id = 2,
                             Bid = 5800.0,
-                            JobListingId = 2,
-                            SeekerId = 1
+                            ContractorId = 1,
+                            accepted = false
                         });
                 });
 
@@ -129,10 +131,7 @@ namespace ContractorSwap.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AcceptedId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ContractorModelId")
+                    b.Property<int>("ContractorId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
@@ -152,12 +151,9 @@ namespace ContractorSwap.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("PosterId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ContractorModelId");
+                    b.HasIndex("ContractorId");
 
                     b.ToTable("Jobs");
 
@@ -165,37 +161,47 @@ namespace ContractorSwap.Migrations
                         new
                         {
                             Id = 1,
-                            AcceptedId = 0,
+                            ContractorId = 1,
                             Date = new DateTime(2019, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Ceiling fan installation: Master Bedroom",
                             Location = "666 Elm Street, Aurora, IL",
-                            Name = "Test Job",
-                            PosterId = 1
+                            Name = "Test Job"
                         },
                         new
                         {
                             Id = 2,
-                            AcceptedId = 0,
+                            ContractorId = 2,
                             Date = new DateTime(2023, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Install a hot tub for a Chihuaha",
                             Location = "1111 Hampton Hills Ct., Hamptons, CT",
-                            Name = "Secondary Job",
-                            PosterId = 2
+                            Name = "Secondary Job"
                         });
                 });
 
             modelBuilder.Entity("ContractorSwap.Models.ApplicationModel", b =>
                 {
+                    b.HasOne("ContractorSwap.Models.ContractorModel", "Contractor")
+                        .WithMany()
+                        .HasForeignKey("ContractorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ContractorSwap.Models.JobListingModel", null)
                         .WithMany("Applications")
                         .HasForeignKey("JobListingModelId");
+
+                    b.Navigation("Contractor");
                 });
 
             modelBuilder.Entity("ContractorSwap.Models.JobListingModel", b =>
                 {
-                    b.HasOne("ContractorSwap.Models.ContractorModel", null)
+                    b.HasOne("ContractorSwap.Models.ContractorModel", "Contractor")
                         .WithMany("JobListings")
-                        .HasForeignKey("ContractorModelId");
+                        .HasForeignKey("ContractorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Contractor");
                 });
 
             modelBuilder.Entity("ContractorSwap.Models.ContractorModel", b =>

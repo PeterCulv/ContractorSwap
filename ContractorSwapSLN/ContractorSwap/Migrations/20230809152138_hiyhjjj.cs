@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ContractorSwap.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class hiyhjjj : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -40,18 +40,17 @@ namespace ContractorSwap.Migrations
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    PosterId = table.Column<int>(type: "int", nullable: false),
-                    AcceptedId = table.Column<int>(type: "int", nullable: false),
-                    ContractorModelId = table.Column<int>(type: "int", nullable: true)
+                    ContractorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Jobs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Jobs_Contractors_ContractorModelId",
-                        column: x => x.ContractorModelId,
+                        name: "FK_Jobs_Contractors_ContractorId",
+                        column: x => x.ContractorId,
                         principalTable: "Contractors",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -61,13 +60,19 @@ namespace ContractorSwap.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Bid = table.Column<double>(type: "float", nullable: false),
-                    JobListingId = table.Column<int>(type: "int", nullable: false),
-                    SeekerId = table.Column<int>(type: "int", nullable: false),
+                    accepted = table.Column<bool>(type: "bit", nullable: false),
+                    ContractorId = table.Column<int>(type: "int", nullable: false),
                     JobListingModelId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Applications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Applications_Contractors_ContractorId",
+                        column: x => x.ContractorId,
+                        principalTable: "Contractors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Applications_Jobs_JobListingModelId",
                         column: x => x.JobListingModelId,
@@ -84,15 +89,38 @@ namespace ContractorSwap.Migrations
                     { 2, "Hartford, Connecticut", "Francis Charlery", "francis456", "Carpenrty", "frantheman" }
                 });
 
+            migrationBuilder.InsertData(
+                table: "Applications",
+                columns: new[] { "Id", "Bid", "ContractorId", "JobListingModelId", "accepted" },
+                values: new object[,]
+                {
+                    { 1, 750.0, 2, null, false },
+                    { 2, 5800.0, 1, null, false }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Jobs",
+                columns: new[] { "Id", "ContractorId", "Date", "Description", "Location", "Name" },
+                values: new object[,]
+                {
+                    { 1, 1, new DateTime(2019, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ceiling fan installation: Master Bedroom", "666 Elm Street, Aurora, IL", "Test Job" },
+                    { 2, 2, new DateTime(2023, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Install a hot tub for a Chihuaha", "1111 Hampton Hills Ct., Hamptons, CT", "Secondary Job" }
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Applications_ContractorId",
+                table: "Applications",
+                column: "ContractorId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Applications_JobListingModelId",
                 table: "Applications",
                 column: "JobListingModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Jobs_ContractorModelId",
+                name: "IX_Jobs_ContractorId",
                 table: "Jobs",
-                column: "ContractorModelId");
+                column: "ContractorId");
         }
 
         /// <inheritdoc />

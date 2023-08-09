@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ContractorSwap.Models
 {
@@ -23,6 +24,8 @@ namespace ContractorSwap.Models
 
         [Required]
         public string Password { get; set; }
+        [NotMapped]
+        public IEnumerable<ApplicationModel>? AcceptedJobs { get; set; }  
     
         public virtual IEnumerable<JobListingModel>? JobListings { get; set; }
 
