@@ -4,12 +4,14 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Create a Job Listing!</h1>
 
-<h4>JobListingModel</h4>
+<h4>Be specific about specialties required in your descriptions!</h4>
 <hr />
 <div class="row">
+    <div class="create-page">
     <div class="col-md-4">
+        <div class="form-container">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -25,7 +27,7 @@
             <div class="form-group">
                 <label asp-for="Location" class="control-label"></label>
                 <input asp-for="Location" class="form-control" />
-                <span asp-validation-for="Location" class="text-danger"></span>
+                <span asp-validation-for="Location" class="text-danger"></span> 
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
@@ -37,13 +39,14 @@
                 <input asp-for="ContractorId" class="form-control" />
                 <span asp-validation-for="ContractorId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group-btn" style="margin-top: 20px; text-align: center;">
+                        <input type="submit" value="Create" class="btn btn-primary btn-lg rounded-pill btn-hover-effect" style="background-color: dimgrey;" />
             </div>
         </form>
+        </div>
     </div>
 </div>
-
+</div>
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
@@ -51,3 +54,48 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<style>
+.create-page {
+    display: flex;
+    justify-content: center; 
+    align-items: center;  
+    height: 100vh; 
+    margin-top: -200px;
+}
+h1{
+    color: aliceblue;
+        font-family: fantasy,'Copperplate Gothic';
+}
+    .form-container {
+        font-family:'Calisto MT';
+        background-color: lightgray; 
+        padding: 50px;
+        border: 5px solid aliceblue;
+        border-radius: 50px;
+
+    }
+    h4{
+        color: aliceblue;
+    }
+body {
+        background-image: url(https://wallpapercave.com/wp/wp4947114.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+   
+    .col-md-4{
+        width: 600px;
+    }
+    .form-group-btn{
+        color:black;
+    }
+
+    .btn-hover-effect {
+      transition: transform 1s;
+    }
+
+     .btn-hover-effect:hover {
+          transform: scale(1.2);
+        }
+
+</style>
