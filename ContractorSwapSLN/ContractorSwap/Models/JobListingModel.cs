@@ -26,7 +26,7 @@ namespace ContractorSwap.Models
         
         [ForeignKey("ContractorId")]
         public int ContractorId { get; set; }
-        public ContractorModel Contractor { get; set; }
+        public virtual ContractorModel Contractor { get; set; }
 
         public virtual IEnumerable<ApplicationModel>? Applications { get; set; }    
     }
