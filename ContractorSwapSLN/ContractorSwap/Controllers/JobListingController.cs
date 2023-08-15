@@ -23,7 +23,7 @@ namespace ContractorSwap.Controllers
         public async Task<IActionResult> Index()
         {
               return _context.Jobs != null ? 
-                          View(await _context.Jobs.ToListAsync()) :
+                          View(await _context.Jobs.Include(x=>x.Contractor).ToListAsync()) :
                           Problem("Entity set 'DataContext.Jobs'  is null.");
         }
 
@@ -35,7 +35,7 @@ namespace ContractorSwap.Controllers
                 return NotFound();
             }
 
-            var jobListingModel = await _context.Jobs
+            var jobListingModel = await _context.Jobs.Include(x => x.Contractor)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (jobListingModel == null)
             {
