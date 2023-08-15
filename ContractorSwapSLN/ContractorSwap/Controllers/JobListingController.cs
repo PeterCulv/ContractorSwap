@@ -56,7 +56,7 @@ namespace ContractorSwap.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Date,Location,Description,PosterId,AcceptedId")] JobListingModel jobListingModel)
+        public async Task<IActionResult> Create([Bind("Id,Name,Date,Location,Description,PosterId,ContractorId")] JobListingModel jobListingModel)
         {
             if (ModelState.IsValid)
             {
@@ -75,7 +75,7 @@ namespace ContractorSwap.Controllers
                 return NotFound();
             }
 
-            var jobListingModel = await _context.Jobs.FindAsync(id);
+            var jobListingModel = await _context.Jobs.Include(x => x.Contractor).FirstOrDefaultAsync(x=>x.Id==id);
             if (jobListingModel == null)
             {
                 return NotFound();
@@ -88,34 +88,15 @@ namespace ContractorSwap.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Date,Location,Description,PosterId,AcceptedId")] JobListingModel jobListingModel)
+        public async Task<IActionResult> Edit(int id, JobListingModel jobListingModel)
         {
-            if (id != jobListingModel.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(jobListingModel);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!JobListingModelExists(jobListingModel.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                _context.Update(jobListingModel);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(jobListingModel);
+             return View(jobListingModel);
         }
 
         // GET: JobListing/Delete/5
