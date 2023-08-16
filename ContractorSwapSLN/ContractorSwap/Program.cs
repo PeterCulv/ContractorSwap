@@ -1,6 +1,7 @@
 
 using ContractorSwap.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Text.Json.Serialization;
 
 namespace ContractorSwap
 
@@ -15,6 +16,8 @@ namespace ContractorSwap
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<DataContext>();
+            builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
             var app = builder.Build();
 
