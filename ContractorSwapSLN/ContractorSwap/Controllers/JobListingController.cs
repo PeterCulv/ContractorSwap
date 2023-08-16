@@ -22,8 +22,13 @@ namespace ContractorSwap.Controllers
         // GET: JobListing
         public async Task<IActionResult> Index()
         {
-              return _context.Jobs != null ? 
-                          View(await _context.Jobs.Include(x=>x.Contractor).ToListAsync()) :
+            string? password = Request.Cookies["password"];
+            string? username = Request.Cookies["username"];
+
+            return _context.Jobs != null ? 
+                          View(await _context.Jobs.Include(x=>x.Contractor)
+                          .Where(x => x.Contractor.UserName == username && x.Contractor.Password == password)
+                          .ToListAsync()) :
                           Problem("Entity set 'DataContext.Jobs'  is null.");
         }
 

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ContractorSwap.Data;
 using ContractorSwap.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace ContractorSwap.Controllers
 {
+
     public class ContractorController : Controller
     {
         private readonly DataContext _context;
@@ -18,6 +20,18 @@ namespace ContractorSwap.Controllers
         {
             _context = context;
         }
+
+        public void CreateUser(string password, string username)
+        {
+            CookieOptions user = new CookieOptions
+            {
+                Expires = DateTime.Now.AddHours(24)
+            };
+
+            Response.Cookies.Append(password, username, user);
+        }
+
+
 
         // GET: Contractor
         public async Task<IActionResult> Index()
@@ -59,6 +73,8 @@ namespace ContractorSwap.Controllers
         {
             if (ModelState.IsValid)
             {
+                CreateUser(contractorModel.Password, contractorModel.UserName);
+
                 _context.Add(contractorModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
