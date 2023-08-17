@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContractorSwap.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230809152138_hiyhjjj")]
-    partial class hiyhjjj
+    [Migration("20230815160818_testing")]
+    partial class testing
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

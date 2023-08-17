@@ -20,3 +20,21 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+#JobListingIndexPage{
+    width: 100%;
+    background-image: url('../Images/Hi-Res Tools surround.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+#JobListingIndexTitle{
+    background-color: antiquewhite;
+    opacity: 0.80;
+    border-radius: 10px
+}
+#JobListingIndexTable {
+    background-color: antiquewhite;
+    opacity: 0.80;
+    border-radius: 10px
+}
