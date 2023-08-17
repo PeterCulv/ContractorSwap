@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ContractorSwap.Migrations
 {
     /// <inheritdoc />
-    public partial class hiyhjjj : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -61,6 +61,7 @@ namespace ContractorSwap.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Bid = table.Column<double>(type: "float", nullable: false),
                     accepted = table.Column<bool>(type: "bit", nullable: false),
+                    JobListingId = table.Column<int>(type: "int", nullable: false),
                     ContractorId = table.Column<int>(type: "int", nullable: false),
                     JobListingModelId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -71,8 +72,12 @@ namespace ContractorSwap.Migrations
                         name: "FK_Applications_Contractors_ContractorId",
                         column: x => x.ContractorId,
                         principalTable: "Contractors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Applications_Jobs_JobListingId",
+                        column: x => x.JobListingId,
+                        principalTable: "Jobs",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Applications_Jobs_JobListingModelId",
                         column: x => x.JobListingModelId,
@@ -90,15 +95,6 @@ namespace ContractorSwap.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Applications",
-                columns: new[] { "Id", "Bid", "ContractorId", "JobListingModelId", "accepted" },
-                values: new object[,]
-                {
-                    { 1, 750.0, 2, null, false },
-                    { 2, 5800.0, 1, null, false }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Jobs",
                 columns: new[] { "Id", "ContractorId", "Date", "Description", "Location", "Name" },
                 values: new object[,]
@@ -107,10 +103,24 @@ namespace ContractorSwap.Migrations
                     { 2, 2, new DateTime(2023, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Install a hot tub for a Chihuaha", "1111 Hampton Hills Ct., Hamptons, CT", "Secondary Job" }
                 });
 
+            migrationBuilder.InsertData(
+                table: "Applications",
+                columns: new[] { "Id", "Bid", "ContractorId", "JobListingId", "JobListingModelId", "accepted" },
+                values: new object[,]
+                {
+                    { 1, 750.0, 2, 1, null, false },
+                    { 2, 5800.0, 1, 2, null, false }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Applications_ContractorId",
                 table: "Applications",
                 column: "ContractorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Applications_JobListingId",
+                table: "Applications",
+                column: "JobListingId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Applications_JobListingModelId",

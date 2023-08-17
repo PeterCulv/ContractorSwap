@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContractorSwap.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230809152138_hiyhjjj")]
-    partial class hiyhjjj
+    [Migration("20230816180739_inits")]
+    partial class inits
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,6 +39,9 @@ namespace ContractorSwap.Migrations
                     b.Property<int>("ContractorId")
                         .HasColumnType("int");
 
+                    b.Property<int>("JobListingId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("JobListingModelId")
                         .HasColumnType("int");
 
@@ -48,6 +51,8 @@ namespace ContractorSwap.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ContractorId");
+
+                    b.HasIndex("JobListingId");
 
                     b.HasIndex("JobListingModelId");
 
@@ -59,6 +64,7 @@ namespace ContractorSwap.Migrations
                             Id = 1,
                             Bid = 750.0,
                             ContractorId = 2,
+                            JobListingId = 1,
                             accepted = false
                         },
                         new
@@ -66,6 +72,7 @@ namespace ContractorSwap.Migrations
                             Id = 2,
                             Bid = 5800.0,
                             ContractorId = 1,
+                            JobListingId = 2,
                             accepted = false
                         });
                 });
@@ -183,7 +190,13 @@ namespace ContractorSwap.Migrations
                     b.HasOne("ContractorSwap.Models.ContractorModel", "Contractor")
                         .WithMany()
                         .HasForeignKey("ContractorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("ContractorSwap.Models.JobListingModel", "JobListing")
+                        .WithMany()
+                        .HasForeignKey("JobListingId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("ContractorSwap.Models.JobListingModel", null)
@@ -191,6 +204,8 @@ namespace ContractorSwap.Migrations
                         .HasForeignKey("JobListingModelId");
 
                     b.Navigation("Contractor");
+
+                    b.Navigation("JobListing");
                 });
 
             modelBuilder.Entity("ContractorSwap.Models.JobListingModel", b =>

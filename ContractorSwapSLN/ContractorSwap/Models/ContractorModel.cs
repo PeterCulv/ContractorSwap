@@ -25,7 +25,7 @@ namespace ContractorSwap.Models
         [Required]
         public string Password { get; set; }
         [NotMapped]
-        public IEnumerable<ApplicationModel>? AcceptedJobs { get; set; }  
+        public virtual IEnumerable<ApplicationModel>? AcceptedJobs { get; set; }  
     
         public virtual IEnumerable<JobListingModel>? JobListings { get; set; }
 
