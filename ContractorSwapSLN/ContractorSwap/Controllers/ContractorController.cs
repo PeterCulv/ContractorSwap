@@ -21,15 +21,35 @@ namespace ContractorSwap.Controllers
             _context = context;
         }
 
-        public void CreateUser(string password, string username)
+        public void CreateUser(string userName, string password)
         {
-            CookieOptions user = new CookieOptions
+            if (Request.Cookies.ContainsKey("UserCookie") && Request.Cookies.ContainsKey("PasswordCookie"))
+            {
+                // Remove the existing cookies
+                Response.Cookies.Delete("UserCookie");
+                Response.Cookies.Delete("PasswordCookie");
+            }
+
+            CookieOptions userCookieOptions = new CookieOptions
             {
                 Expires = DateTime.Now.AddHours(24)
             };
 
-            Response.Cookies.Append(password, username, user);
+            // Create new cookies with the updated information
+            Response.Cookies.Append("UserCookie", userName, userCookieOptions);
+            Response.Cookies.Append("PasswordCookie", password, userCookieOptions);
         }
+        public void Logout()
+        {
+            if (Request.Cookies.ContainsKey("UserCookie") && Request.Cookies.ContainsKey("PasswordCookie"))
+            {
+                // Remove the existing cookies
+                Response.Cookies.Delete("UserCookie");
+                Response.Cookies.Delete("PasswordCookie");
+            }
+            
+        }
+    
 
 
 
@@ -73,7 +93,8 @@ namespace ContractorSwap.Controllers
         {
             if (ModelState.IsValid)
             {
-                CreateUser(contractorModel.Password, contractorModel.UserName);
+                
+                CreateUser(contractorModel.UserName, contractorModel.Password);
 
                 _context.Add(contractorModel);
                 await _context.SaveChangesAsync();
