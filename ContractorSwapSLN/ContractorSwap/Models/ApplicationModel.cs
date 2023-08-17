@@ -12,14 +12,16 @@ namespace ContractorSwap.Models
         [Required]
         public double Bid { get; set; }
         public bool accepted { get; set; } = false;
-        
-        [ForeignKey("JobListingId")]
+
         public int JobListingId { get; set; }
-        public JobListingModel JobListing { get; set; }
+        [ForeignKey("JobListingId")]
         
+        public virtual JobListingModel? JobListing { get; set; }
+        
+        public int ContractorId { get; set; }
         [ForeignKey("ContractorId")]
-        public int ContractorId { get; set; }   
-        public ContractorModel Contractor { get; set; }
+          
+        public virtual ContractorModel? Contractor { get; set; }
         
 
        
