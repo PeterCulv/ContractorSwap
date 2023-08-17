@@ -1,4 +1,5 @@
 
+using Azure.Core;
 using ContractorSwap.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Text.Json.Serialization;
@@ -6,8 +7,10 @@ using System.Text.Json.Serialization;
 namespace ContractorSwap
 
 {
+    
     public class Program
     {
+        public static bool LoggedIn = false;
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -28,8 +31,10 @@ namespace ContractorSwap
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            
 
-            app.UseHttpsRedirection();
+
+                app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
