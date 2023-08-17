@@ -56,7 +56,7 @@
             <div class="col-lg-5">
                 <h1 class="text-white font-weight-light">Contractor Swap</h1>
                 <p class="text-white h1-ptag">Power Up Your Projects with Contractor Swap! Need a helping hand or unable to make it to a job? Our platform lets contractors seamlessly share and cover tasks. Join our community of collaboration and never miss a beat in your projects again. Connect, swap, conquer!</p>
-                <a class="btn btn-primary" href="#!">Sign Up!</a>
+                <a class="btn btn-primary" asp-controller="Contractor" asp-action="Create">Sign Up!</a>
             </div>
         </div>
         <!-- Call to Action-->
@@ -71,7 +71,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Contractor Login</h5>
                         <p class="card-text">Ready to Dive In? Log in to Connect with Your Contractor Community and Unlock Opportunities!</p>
-                        <a href="#!" class="btn btn-primary align-middle">Login</a>
+                        <a asp-controller="Contractor" asp-action="Create" class="btn btn-primary align-middle">Login</a>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Post Your Job Opportunities</h5>
                         <p class="card-text">Looking for Extra Hands? Post Your Jobs and Connect with Skilled Contractors Ready to Fill Your Gaps!</p>
-                        <a href="#!" class="btn btn-primary">Post a Job</a>
+                        <a asp-controller="JobListing" asp-action="Create" class="btn btn-primary">Post a Job</a>
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Explore Job Listings</h5>
                         <p class="card-text">Ready to Get to Work?<br /> Explore Job Listings and Find Your Next Contracting Opportunity Today!</p>
-                        <a href="#!" class="btn btn-primary">Search Jobs</a>
+                        <a asp-controller="JobListing" asp-action="Index" class="btn btn-primary">Search Jobs</a>
                     </div>
                 </div>
             </div>

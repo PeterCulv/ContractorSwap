@@ -77,6 +77,22 @@ namespace ContractorSwap.Controllers
 
             return View(contractorModel);
         }
+        public async Task<IActionResult> MyDetails(int? id)
+        {
+            if (Request.Cookies.ContainsKey("UserCookie") && Request.Cookies.ContainsKey("PasswordCookie"))
+            {
+                string userName = Request.Cookies["UserCookie"];
+                string password = Request.Cookies["PasswordCookie"];
+                var contractorModel = await _context.Contractors.Where(x => x.UserName == userName && x.Password == password).FirstOrDefaultAsync();
+                return View(contractorModel);
+            }
+
+            else { return RedirectToAction(nameof(Create)); }
+
+
+
+
+        }
 
         // GET: Contractor/Create
         public IActionResult Create()

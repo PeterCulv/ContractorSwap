@@ -39,7 +39,7 @@ body {
         overflow: hidden;
         object-fit: cover;
         z-index: 3;
-        transition: 0.08s cubic-bezier(0.03, 0.98, 0.52, 0.99);
+        transition: 2s cubic-bezier(0.03, 0.98, 0.52, 0.99);
     }
 
         #image-comparison-slider .image-wrapper video {
@@ -72,7 +72,7 @@ body {
         align-items: center;
         user-select: none;
         z-index: 3;
-        transition: 0.08s cubic-bezier(0.03, 0.98, 0.52, 0.99);
+        transition: 2s cubic-bezier(0.03, 0.98, 0.52, 0.99);
     }
 
         #image-comparison-slider .handle .handle-line {
