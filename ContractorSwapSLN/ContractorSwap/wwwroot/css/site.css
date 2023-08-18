@@ -128,10 +128,10 @@ body {
   margin-bottom: 60px;
 }
 
-#JobListingIndexPage{
+#JobListingIndexPage {
     width: 100%;
-    background-image: url('../Images/Hi-Res Tools surround.jpg');
-    background-repeat:no-repeat;
+    background-image: url('../img/woodworkingbackground.jpg');
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
@@ -144,4 +144,8 @@ body {
     background-color: antiquewhite;
     opacity: 0.80;
     border-radius: 10px
+}
+#CardListings{
+    display: flex;
+    justify-content:space-around;
 }
