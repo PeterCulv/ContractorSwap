@@ -15,6 +15,15 @@ namespace ContractorSwap.Controllers
 
         public IActionResult Index()
         {
+            if (Request.Cookies.ContainsKey("UserCookie") && Request.Cookies.ContainsKey("PasswordCookie"))
+            {
+                Program.LoggedIn = true;
+            }
+            else { Program.LoggedIn = false; }
+            return View();
+        }
+        public IActionResult AboutUs()
+        {
             return View();
         }
 
