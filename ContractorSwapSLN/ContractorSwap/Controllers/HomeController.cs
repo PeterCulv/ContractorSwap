@@ -22,6 +22,10 @@ namespace ContractorSwap.Controllers
             else { Program.LoggedIn = false; }
             return View();
         }
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {

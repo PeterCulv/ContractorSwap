@@ -9,7 +9,7 @@ namespace ContractorSwap
 {
     
     public class Program
-    {
+    {   // simple boolean that checks if user is logged in to modify views and check if statements
         public static bool LoggedIn = false;
         public static void Main(string[] args)
         {
