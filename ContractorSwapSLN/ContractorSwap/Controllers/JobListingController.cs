@@ -20,14 +20,60 @@ namespace ContractorSwap.Controllers
         }
 
         // GET: JobListing
+        public async Task<IActionResult> MyIndex()
+        {
+            string userName = Request.Cookies["UserCookie"];
+            string password = Request.Cookies["PasswordCookie"];           
+
+            if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
+            {
+                var jobListings = await _context.Jobs
+                    .Include(x => x.Contractor)
+                    .Where(x => x.Contractor.UserName == userName && x.Contractor.Password == password)
+                    .ToListAsync();
+
+                return View(jobListings);
+            }
+            else
+            {
+                // Redirect or display an error message if the cookies are not set
+                return RedirectToAction("Create", "Contractor"); // Replace with appropriate action and controller names
+            }
+        }
         public async Task<IActionResult> Index()
         {
-              return _context.Jobs != null ? 
-                          View(await _context.Jobs.ToListAsync()) :
-                          Problem("Entity set 'DataContext.Jobs'  is null.");
+            string userName = Request.Cookies["UserCookie"];
+            string password = Request.Cookies["PasswordCookie"];
+
+            var jobListings = await _context.Jobs
+                    .Include(x => x.Contractor)
+                    .Where(x => x.Contractor.UserName != userName && x.Contractor.Password != password)
+                    .ToListAsync();
+
+            return View(jobListings);
+
         }
 
         // GET: JobListing/Details/5
+        public async Task<IActionResult> MyDetails(int? id)
+        {
+            string userName = Request.Cookies["UserCookie"];
+            string password = Request.Cookies["PasswordCookie"];
+
+            if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
+            {
+
+                var jobListingModel = await _context.Jobs.Include(x => x.Contractor)
+                    .Where(x => x.Contractor.UserName != userName && x.Contractor.Password != password)
+                    .FirstOrDefaultAsync(m => m.Id == id);
+                return View(jobListingModel);
+            }
+            else
+            {
+                // Redirect or display an error message if the cookies are not set
+                return RedirectToAction("Create", "Contractor"); // Replace with appropriate action and controller names
+            }
+        }
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Jobs == null)
@@ -35,7 +81,7 @@ namespace ContractorSwap.Controllers
                 return NotFound();
             }
 
-            var jobListingModel = await _context.Jobs
+            var jobListingModel = await _context.Jobs.Include(x => x.Contractor)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (jobListingModel == null)
             {
@@ -48,7 +94,11 @@ namespace ContractorSwap.Controllers
         // GET: JobListing/Create
         public IActionResult Create()
         {
-            return View();
+            if (Request.Cookies.ContainsKey("UserCookie") && Request.Cookies.ContainsKey("PasswordCookie"))
+            {
+                return View();
+            }
+            else { return RedirectToAction("Create", "Contractor"); }
         }
 
         // POST: JobListing/Create
@@ -56,15 +106,22 @@ namespace ContractorSwap.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Date,Location,Description,PosterId,AcceptedId")] JobListingModel jobListingModel)
+        public async Task<IActionResult> Create(JobListingModel jobListingModel)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(jobListingModel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(jobListingModel);
+            
+                if (ModelState.IsValid)
+                {
+                    string userName = Request.Cookies["UserCookie"];
+                    string password = Request.Cookies["PasswordCookie"];
+                    ContractorModel contractor = new ContractorModel();
+                    contractor = _context.Contractors.Where(x => x.UserName == userName && x.Password == password).FirstOrDefault();
+                    jobListingModel.ContractorId = contractor.Id;
+                    _context.Add(jobListingModel);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                return View(jobListingModel);
+            
         }
 
         // GET: JobListing/Edit/5
@@ -75,7 +132,7 @@ namespace ContractorSwap.Controllers
                 return NotFound();
             }
 
-            var jobListingModel = await _context.Jobs.FindAsync(id);
+            var jobListingModel = await _context.Jobs.Include(x => x.Contractor).FirstOrDefaultAsync(x=>x.Id==id);
             if (jobListingModel == null)
             {
                 return NotFound();
@@ -88,34 +145,15 @@ namespace ContractorSwap.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Date,Location,Description,PosterId,AcceptedId")] JobListingModel jobListingModel)
+        public async Task<IActionResult> Edit(int id, JobListingModel jobListingModel)
         {
-            if (id != jobListingModel.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(jobListingModel);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!JobListingModelExists(jobListingModel.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                _context.Update(jobListingModel);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(jobListingModel);
+             return View(jobListingModel);
         }
 
         // GET: JobListing/Delete/5

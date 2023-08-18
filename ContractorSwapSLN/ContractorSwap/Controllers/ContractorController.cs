@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ContractorSwap.Data;
 using ContractorSwap.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace ContractorSwap.Controllers
 {
+
     public class ContractorController : Controller
     {
         private readonly DataContext _context;
@@ -18,6 +20,38 @@ namespace ContractorSwap.Controllers
         {
             _context = context;
         }
+
+        public void CreateUser(string userName, string password)
+        {
+            if (Request.Cookies.ContainsKey("UserCookie") && Request.Cookies.ContainsKey("PasswordCookie"))
+            {
+                // Remove the existing cookies
+                Response.Cookies.Delete("UserCookie");
+                Response.Cookies.Delete("PasswordCookie");
+            }
+
+            CookieOptions userCookieOptions = new CookieOptions
+            {
+                Expires = DateTime.Now.AddHours(24)
+            };
+
+            // Create new cookies with the updated information
+            Response.Cookies.Append("UserCookie", userName, userCookieOptions);
+            Response.Cookies.Append("PasswordCookie", password, userCookieOptions);
+        }
+        public void Logout()
+        {
+            if (Request.Cookies.ContainsKey("UserCookie") && Request.Cookies.ContainsKey("PasswordCookie"))
+            {
+                // Remove the existing cookies
+                Response.Cookies.Delete("UserCookie");
+                Response.Cookies.Delete("PasswordCookie");
+            }
+            
+        }
+    
+
+
 
         // GET: Contractor
         public async Task<IActionResult> Index()
@@ -43,6 +77,22 @@ namespace ContractorSwap.Controllers
 
             return View(contractorModel);
         }
+        public async Task<IActionResult> MyDetails(int? id)
+        {
+            if (Request.Cookies.ContainsKey("UserCookie") && Request.Cookies.ContainsKey("PasswordCookie"))
+            {
+                string userName = Request.Cookies["UserCookie"];
+                string password = Request.Cookies["PasswordCookie"];
+                var contractorModel = await _context.Contractors.Where(x => x.UserName == userName && x.Password == password).FirstOrDefaultAsync();
+                return View(contractorModel);
+            }
+
+            else { return RedirectToAction(nameof(Create)); }
+
+
+
+
+        }
 
         // GET: Contractor/Create
         public IActionResult Create()
@@ -59,6 +109,9 @@ namespace ContractorSwap.Controllers
         {
             if (ModelState.IsValid)
             {
+                
+                CreateUser(contractorModel.UserName, contractorModel.Password);
+
                 _context.Add(contractorModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

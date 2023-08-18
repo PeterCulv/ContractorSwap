@@ -34,10 +34,8 @@
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ContractorId" class="control-label"></label>
-                <input asp-for="ContractorId" class="form-control" />
-                <span asp-validation-for="ContractorId" class="text-danger"></span>
+            <div class="form-group">               
+                <input type="hidden" asp-for="ContractorId" value="0" class="form-control" />
             </div>
             <div class="form-group-btn" style="margin-top: 20px; text-align: center;">
                         <input type="submit" value="Create" class="btn btn-primary btn-lg rounded-pill btn-hover-effect" style="background-color: dimgrey;" />
