@@ -7,12 +7,9 @@
 <body class="bg-image" id="JobListingIndexPage">
 <div class="row justify-content-center">
     <div class="col-4 text-center mt-5 mb-5" id="JobListingIndexTitle">
-        <h1>Job Listings</h1>
+            <h1 id="JobListingsTitleText"style="color: #403732; font-weight: 700">Job Listings</h1>
 
-        <p>
-            <a asp-action="Create">Add a New Job</a>
-        </p>
-     </div>
+    </div>
 </div>
 @*<div class="p-1" id="JobListingIndexTable">
     <table class="table table-hover border-dark">
@@ -37,16 +34,18 @@
             </tr>
         </thead>
     <tbody>*@
-        <div class="row">
+        <div class="row" id="CardListings">
             @foreach (var item in Model) {
             
-                <div class="card col-4 flex-md-wrap" style="width: 18rem; margin: 45px; padding: 0px;">
-                        <img class="card-img-top" src="~/Images/Hi-Res Tools surround.jpg" alt="Job Type Image">
+                <div class="card col-4 flex-md-wrap" id="JobListingsCard" style="width: 18rem; margin: 45px; padding: 5px;">
+                <a asp-action="Details" asp-route-id="@item.Id" class="nostyle">
+                    <img class="card-img-top" id="JobListingsCardImage"src="~/Images/Hi-Res Tools surround.jpg" alt="Job Type Image">
                             <div class="card-body">
-                                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                                <h5 class="card-title" style="color: #F2EFEB">@Html.DisplayFor(modelItem => item.Name)</h5>
                                 <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
-                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                                
                             </div>
+                </a>
                 </div>
                 
             }
@@ -74,7 +73,4 @@
                 </td>
             </tr>*@
 
-        </tbody>
-    </table>
-</div>
 </body>
