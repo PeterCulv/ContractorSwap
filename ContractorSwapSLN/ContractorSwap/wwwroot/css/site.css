@@ -2,8 +2,18 @@ body {
     background-image: url('../img/woodworkingbackground.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center center;  
 }
+
+#body-content {
+    min-height: calc(100vh - 120px);
+    /* 80px header + 40px footer = 120px  */
+}
+
+footer {
+    min-height: 40px;
+}
+
 /*Slider Section*/
 :root {
     --image-comparison-slider-width: min(700px);
@@ -123,9 +133,6 @@ h1 {
 
 .midtext-zz {
     font-family: 'Caprasimo', cursive;
-}
-body {
-  margin-bottom: 60px;
 }
 
 #JobListingIndexPage{
