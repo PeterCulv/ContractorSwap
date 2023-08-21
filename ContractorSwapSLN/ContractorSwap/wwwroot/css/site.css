@@ -2,8 +2,18 @@ body {
     background-image: url('../img/woodworkingbackground.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center center;  
 }
+
+#body-content {
+    min-height: calc(100vh - 120px);
+    /* 80px header + 40px footer = 120px  */
+}
+
+footer {
+    min-height: 40px;
+}
+
 /*Slider Section*/
 :root {
     --image-comparison-slider-width: min(700px);
@@ -126,8 +136,7 @@ h1 {
     font-family: 'Roboto', sans-serif;
 }
 body {
-    margin-bottom: 60px;
- 
+  margin-bottom: 60px;
 }
 
 #JobListingIndexPage {
@@ -191,4 +200,17 @@ a.nostyle:visited{
     text-decoration: inherit;
     color: inherit;
     cursor: auto;
+}
+.card-container{
+    position:relative;
+    text-align:center;
+}
+.top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    background-color: #403732;
+    padding: 10px;
+    border-radius:10px;
+    opacity:0.90
 }

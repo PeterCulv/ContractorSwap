@@ -1,7 +1,9 @@
 ﻿using ContractorSwap.Data;
 using ContractorSwap.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
 
 namespace ContractorSwap.Controllers
 {
@@ -90,6 +92,39 @@ namespace ContractorSwap.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Specialties,Location,UserName,Password")] ContractorModel contractorModel)
         {
+            if (ModelState.IsValid)
+            {
+                _context.Add(contractorModel);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(contractorModel);
+        }
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        // POST: Contractor/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register([Bind("Id,Name,Specialties,Location,UserName,Password")] ContractorModel contractorModel)
+        {
+            if (Request.Cookies.ContainsKey("UserCookie") && Request.Cookies.ContainsKey("PasswordCookie"))
+            {
+                return RedirectToAction(nameof(MyDetails));
+            }
+            foreach (ContractorModel contractor in _context.Contractors)
+            {
+                if (contractor.UserName == contractorModel.UserName && contractor.Password == contractorModel.Password)
+                {                    
+                    Program.HasAccount = true;
+                    return RedirectToAction("Login", "Contractor");
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(contractorModel);

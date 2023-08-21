@@ -11,6 +11,8 @@ namespace ContractorSwap
     public class Program
     {   // simple boolean that checks if user is logged in to modify views and check if statements
         public static bool LoggedIn = false;
+        //boolean to show error message if they try to register with credentials already stored
+        public static bool HasAccount = false;
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
