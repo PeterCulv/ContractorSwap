@@ -18,10 +18,25 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="JobListing" asp-action="MyIndex">My Jobs</a></li>
+                        @if (Program.LoggedIn)
+                        {
+                                <li class="nav-item"><a class="nav-link" asp-controller="JobListing" asp-action="MyIndex">My Jobs</a></li>
+                        }
                         <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="JobListing" asp-action="Index">Find Jobs</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Application" asp-action="Index">Applications</a></li> 
-                        <li class="nav-item"><a class="nav-link" asp-controller="Contractor" asp-action="MyDetails">Profile</a></li>
+                        @if (Program.LoggedIn)
+                        {
+                            <li class="nav-item"><a class="nav-link" asp-controller="Application" asp-action="Index">Applications</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Contractor" asp-action="MyDetails">Profile</a></li>
+                        }
+                        
+                        @{if (Program.LoggedIn)
+                        {
+                            <li class="nav-item"><a class="nav-link" asp-controller="Contractor" asp-action="Logout">Logout</a></li>
+                        }
+                        else
+                        {
+                            <li class="nav-item"><a class="nav-link" asp-controller="Contractor" asp-action="Login">Login</a></li>
+                        }}
                     </ul>
                 </div>
             </div>
