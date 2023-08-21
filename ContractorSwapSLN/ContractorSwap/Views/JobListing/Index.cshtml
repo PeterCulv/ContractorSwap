@@ -46,7 +46,8 @@
                                 <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
                                 <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
                                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
-                            </div>
+                                <a>@item.DaysSince()</a>
+                </div>
                 </div>
                 
             }
