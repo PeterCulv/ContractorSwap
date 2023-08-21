@@ -98,7 +98,7 @@ namespace ContractorSwap.Controllers
             {
                 return View();
             }
-            else { return RedirectToAction("Create", "Contractor"); }
+            else { return RedirectToAction("Login", "Contractor"); }
         }
 
         // POST: JobListing/Create
@@ -118,7 +118,7 @@ namespace ContractorSwap.Controllers
                     jobListingModel.ContractorId = contractor.Id;
                     _context.Add(jobListingModel);
                     await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction("MyIndex", "Contractor");
                 }
                 return View(jobListingModel);
             
