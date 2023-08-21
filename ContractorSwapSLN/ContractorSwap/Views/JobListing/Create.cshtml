@@ -6,12 +6,12 @@
 
 <h1>Create a Job Listing!</h1>
 
-<h4>Be specific about specialties required in your descriptions!</h4>
+
 <hr />
 <div class="row">
     <div class="create-page">
     <div class="col-md-4">
-        <div class="form-container">
+        <div class="app-form-container">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -37,9 +37,9 @@
             <div class="form-group">               
                 <input type="hidden" asp-for="ContractorId" value="0" class="form-control" />
             </div>
-            <div class="form-group-btn" style="margin-top: 20px; text-align: center;">
-                        <input type="submit" value="Create" class="btn btn-primary btn-lg rounded-pill btn-hover-effect" style="background-color: dimgrey;" />
-            </div>
+                <div class="form-group-btn">
+                        <input type="submit" value="Create" class="btn btn-primary btn-hover-effect" />
+                </div>
         </form>
         </div>
     </div>
@@ -53,47 +53,62 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
 <style>
-.create-page {
-    display: flex;
-    justify-content: center; 
-    align-items: center;  
-    height: 100vh; 
-    margin-top: -200px;
-}
-h1{
-    color: aliceblue;
-        font-family: fantasy,'Copperplate Gothic';
-}
-    .form-container {
-        font-family:'Calisto MT';
-        background-color: lightgray; 
+
+    .create-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin-top: -200px;
+    }
+
+    h1 {
+        display: flex;
+        color: #FFFBE0;
+        font-family: 'Roboto';
+        justify-content: center;
+        background-color: #40312C;
+        border: 5px solid aliceblue;
+        border-radius: 50px;
+    }
+
+    .app-form-container {
+        font-family: 'Roboto', sans-serif;
+        background-color: #40312C;
         padding: 50px;
         border: 5px solid aliceblue;
         border-radius: 50px;
+        opacity: 95%;
+        color: #FFFBE0;
+    }
 
-    }
-    h4{
-        color: aliceblue;
-    }
-body {
-        background-image: url(https://wallpapercave.com/wp/wp4947114.jpg);
+   
+
+    body {
+        background-image: url(https://images.pexels.com/photos/7484821/pexels-photo-7484821.jpeg?auto=compress&cs=tinysrgb&w=1600);
         background-size: cover;
         background-position: center;
     }
-   
-    .col-md-4{
+
+    .col-md-4 {
         width: 600px;
     }
-    .form-group-btn{
-        color:black;
+
+    .btn {
+        background-color: #8C4303;
+        border: 1px solid aliceblue;
     }
 
     .btn-hover-effect {
-      transition: transform 1s;
+        background-color: #8C4303;
+        border: 1px solid aliceblue;
+        transition: transform 1s;
     }
 
-     .btn-hover-effect:hover {
-          transform: scale(1.2);
+        .btn-hover-effect:hover {
+            background-color: #8C4303;
+            border: 1px solid aliceblue;
+            transform: scale(1.2);
         }
 
 </style>

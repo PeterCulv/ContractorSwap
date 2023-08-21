@@ -145,3 +145,6 @@ body {
     opacity: 0.80;
     border-radius: 10px
 }
+.app-form-container{
+    font-family: 'Roboto', sans-serif;
+}
