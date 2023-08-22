@@ -89,7 +89,7 @@ namespace ContractorSwap.Controllers
                 
                 _context.Applications.Add(applicationModel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(MyIndex));
             }
             ViewData["ContractorId"] = new SelectList(_context.Contractors, "Id", "Location", applicationModel.ContractorId);
             return View(applicationModel);

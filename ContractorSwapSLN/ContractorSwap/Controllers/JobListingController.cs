@@ -47,7 +47,7 @@ namespace ContractorSwap.Controllers
 
             var jobListings = await _context.Jobs
                     .Include(x => x.Contractor)
-                    //.Where(x => x.Contractor.UserName != userName && x.Contractor.Password != password)
+                    .Where(x => x.Contractor.UserName != userName && x.Contractor.Password != password)
                     .ToListAsync();
 
             return View(jobListings);
