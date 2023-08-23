@@ -6,8 +6,10 @@
 
 <h1>Login</h1>
 
-<h4>ContractorModel</h4>
+
 <hr />
+<div class="create-page">
+    <div class="app-form-container">
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Login">
@@ -22,17 +24,86 @@
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-primary" />
+            <div class="form-group-btn">
+                <input type="submit" value="Create" class="btn btn-primary btn-hover-effect" />
             </div>
         </form>
     </div>
 </div>
+</div>
+</div>
 
 <div>
     <a asp-controller="Home" asp-action="Home">Back to Home</a>
+    <a asp-controller="Contractor" asp-action="Register">I Don't Have an Account'</a>
+
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<style>
+
+    .create-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin-top: -200px;
+    }
+
+    h1 {
+        margin-top: 40px;
+        display: flex;
+        color: aliceblue;
+        font-family: 'Roboto';
+        justify-content: center;
+        background-color: #40312C;
+        border: 5px solid aliceblue;
+        border-radius: 50px;
+    }
+
+    .app-form-container {
+        font-family: 'Roboto', sans-serif;
+        background-color: #40312C;
+        padding: 50px;
+        border: 5px solid aliceblue;
+        border-radius: 50px;
+        opacity: 95%;
+        color: #FFFBE0;
+    }
+
+    h4 {
+        display: flex;
+        justify-content: center;
+        color: aliceblue;
+    }
+
+    body {
+        background-image: url(https://images.pexels.com/photos/7484821/pexels-photo-7484821.jpeg?auto=compress&cs=tinysrgb&w=1600);
+        background-size: cover;
+        background-position: center;
+    }
+
+    .col-md-4 {
+        width: 600px;
+    }
+
+    .btn {
+        background-color: #8C4303;
+        border: 1px solid aliceblue;
+    }
+
+    .btn-hover-effect {
+        background-color: #8C4303;
+        border: 1px solid aliceblue;
+        transition: transform 1s;
+    }
+
+        .btn-hover-effect:hover {
+            background-color: #8C4303;
+            border: 1px solid aliceblue;
+            transform: scale(1.2);
+        }
+
+</style>

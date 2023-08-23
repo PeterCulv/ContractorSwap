@@ -129,7 +129,7 @@ namespace ContractorSwap.Controllers
             {
                 _context.Add(contractorModel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             return View(contractorModel);
         }
