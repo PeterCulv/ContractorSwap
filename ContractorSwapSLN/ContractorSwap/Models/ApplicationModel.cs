@@ -12,7 +12,7 @@ namespace ContractorSwap.Models
         [Required]
         public double Bid { get; set; }
         public bool accepted { get; set; } = false;
-
+        public DateTime Date { get; set; } = DateTime.Now;
         public int JobListingId { get; set; }
         [ForeignKey("JobListingId")]
         
