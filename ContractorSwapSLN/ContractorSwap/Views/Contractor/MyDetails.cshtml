@@ -4,45 +4,49 @@
     ViewData["Title"] = "MyDetails";
 }
 
-<h1>MyDetails</h1>
 
-<div>
-    <h4>ContractorModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+    <h1 class="text-center mb-5">Profile</h1>
+        <div class="card w-50">
+    <dl class="row p-4" style="font-size: 24px">
+        <dt class = "col-xl-4 ">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-xl-8">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-xl-4">
             @Html.DisplayNameFor(model => model.Specialties)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-xl-8">
             @Html.DisplayFor(model => model.Specialties)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-xl-4">
             @Html.DisplayNameFor(model => model.Location)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-xl-8">
             @Html.DisplayFor(model => model.Location)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-xl-4">
             @Html.DisplayNameFor(model => model.UserName)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-xl-8">
             @Html.DisplayFor(model => model.UserName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-xl-4">
             @Html.DisplayNameFor(model => model.Password)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-xl-8">
             @Html.DisplayFor(model => model.Password)
         </dd>
     </dl>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+            <a asp-controller="Home" asp-action="Index">Back to Home</a>
+        </div>
+    </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+

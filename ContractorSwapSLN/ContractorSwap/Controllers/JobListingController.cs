@@ -64,7 +64,7 @@ namespace ContractorSwap.Controllers
             {
 
                 var jobListingModel = await _context.Jobs.Include(x => x.Contractor)
-                    .Where(x => x.Contractor.UserName != userName && x.Contractor.Password != password)
+                    .Where(x => x.Contractor.UserName == userName && x.Contractor.Password == password)
                     .FirstOrDefaultAsync(m => m.Id == id);
                 return View(jobListingModel);
             }
@@ -151,7 +151,7 @@ namespace ContractorSwap.Controllers
             {
                 _context.Update(jobListingModel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("MyDetails", new {id=id});
             }
              return View(jobListingModel);
         }

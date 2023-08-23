@@ -135,9 +135,7 @@ h1 {
 .midtext-zz {
     font-family: 'Roboto', sans-serif;
 }
-body {
-  margin-bottom: 60px;
-}
+
 
 #JobListingIndexPage {
     width: 100%;
@@ -149,7 +147,7 @@ body {
 #JobListingIndexTitle {
     background-color: #F2D1B3;
     opacity: 0.75;
-    padding: 30px;
+    padding: 15px;
     border-radius: 10px
 }
 #JobListingIndexTable {
@@ -213,4 +211,8 @@ a.nostyle:visited{
     padding: 10px;
     border-radius:10px;
     opacity:0.90
+}
+#PostNewJobBtn {
+    background-color: #403732;
+    color: #F2D1B3;
 }
