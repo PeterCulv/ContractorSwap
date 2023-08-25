@@ -15,23 +15,22 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="~/css/site.css" rel="stylesheet" />
+    <style>
+        .card-bg {
+            position: relative;
+            overflow: hidden;
+        }
+
+            .card-bg img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: 0;
+            }
+    </style>
 </head>
 <body>
-    <!-- Responsive navbar-->
-@*    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container px-5">
-            <a class="navbar-brand" href="#!"><img src="~/img/contractor swap.png" width="100px" /></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-controller="Contractor" asp-action="Index">Contractors</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-controller="Application" asp-action="Index">Applications</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="JobListing" asp-action="Index">Jobs</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>*@
     <!-- Page Content-->
     <div class="container px-4 px-lg-5">
         <!-- Heading Row-->
@@ -58,8 +57,8 @@
                 <div class="col-lg-5">
                     <h1 class="text-white font-weight-light">Contractor Swap</h1>
                 <p class="text-white h1-ptag">Power Up Your Projects with Contractor Swap! Need a helping hand or unable to make it to a job? Our platform lets contractors seamlessly share and cover tasks. Join our community of collaboration and never miss a beat in your projects again. Connect, swap, conquer!</p>
-                <a class="btn btn-primary" asp-controller="Contractor" asp-action="Register">Sign Up!</a>
-            </div>
+                        <a class="btn btn-secondary" asp-controller="Contractor" asp-action="Create">Sign Up!</a>
+                </div>
             }
             else
             {
@@ -70,47 +69,48 @@
             }}
         </div>
         <!-- Call to Action-->
-        <div class="card text-white bg-secondary my-5 py-4 text-center">
-            <div class="card-body"><p class="midtext-zz text-white m-0">Elevate Your Support with Contractor Swap: Seamless Job Sharing for Unforeseen Events! Collaborate with fellow contractors to ensure no job goes unattended. Share your jobs or step in for others in times of need. Together, we keep the work flowing smoothly.</p></div>
+        <div class="container mt-5 mb-5 text-center">
+            <div class="card card-bg">
+                <img src="/img/bannerIdea.jpg" alt="Background Image">
+                <div class="card-body" style="z-index: 1;">
+                    <p class="card-text text-white">Elevate Your Support with Contractor Swap: Seamless Job Sharing for Unforeseen Events! Collaborate with fellow contractors to ensure no job goes unattended. Share your jobs or step in for others in times of need. Together, we keep the work flowing smoothly.</p>
+                </div>
+            </div>
         </div>
         <!-- Content Row-->
         <div class="row gx-4 gx-lg-5">
             <div class="col-md-4 mb-5">
-                <div class="card">
+                <div class="card rounded-5 overflow-hidden">
                     <img src="~/img/contractor.jpg" class="card-img-top" />
                     <div class="card-body">
                         <h5 class="card-title">Learn More</h5>
                         <p class="card-text">Learn More about the Creators behind Contractor Swap and our Mission and Goals for the future!</p>
-                        <a asp-controller="Home" asp-action="AboutUs" class="btn btn-primary align-middle">About Us</a>
+                        <a asp-controller="Home" asp-action="AboutUs" class="btn btn-secondary align-middle">About Us</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-5">
-                <div class="card">
+                <div class="card rounded-5 overflow-hidden">
                     <img src="~/img/jobswap.jpg" class="card-img-top" />
                     <div class="card-body">
                         <h5 class="card-title">Post Your Job Opportunities</h5>
                         <p class="card-text">Looking for Extra Hands? Post Your Jobs and Connect with Skilled Contractors Ready to Fill Your Gaps!</p>
-                        <a asp-controller="JobListing" asp-action="Create" class="btn btn-primary">Post a Job</a>
+                        <a asp-controller="JobListing" asp-action="Create" class="btn btn-secondary">Post a Job</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-5">
-                <div class="card">
+                <div class="card rounded-5 overflow-hidden ">
                     <img src="~/img/jobsearch.jpg" class="card-img-top" />
                     <div class="card-body">
                         <h5 class="card-title">Explore Job Listings</h5>
                         <p class="card-text">Ready to Get to Work?<br /> Explore Job Listings and Find Your Next Contracting Opportunity Today!</p>
-                        <a asp-controller="JobListing" asp-action="Index" class="btn btn-primary">Search Jobs</a>
+                        <a asp-controller="JobListing" asp-action="Index" class="btn btn-secondary">Search Jobs</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Footer-->
-    @*<footer class="py-5 bg-dark">
-        <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Contractor Swap 2023</p></div>
-    </footer>*@
     <!-- Core theme JS-->
     <script src="~/js/site.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

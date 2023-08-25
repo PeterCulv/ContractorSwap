@@ -6,12 +6,11 @@ body {
 }
 
 #body-content {
-    min-height: calc(100vh - 120px);
-    /* 80px header + 40px footer = 120px  */
+    min-height: calc(100vh - 140px);
 }
 
 footer {
-    min-height: 40px;
+    min-height: 60px;
 }
 
 /*Slider Section*/
