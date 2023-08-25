@@ -28,6 +28,7 @@ namespace ContractorSwap.Controllers
             if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
             {
                 var jobListings = await _context.Jobs
+                                       
                     .Include(x => x.Contractor)
                     .Where(x => x.Contractor.UserName == userName && x.Contractor.Password == password)
                     .ToListAsync();
@@ -63,7 +64,7 @@ namespace ContractorSwap.Controllers
             if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
             {
 
-                var jobListingModel = await _context.Jobs.Include(x => x.Contractor)
+                var jobListingModel = await _context.Jobs.Include(x => x.Applications).Include(x => x.Contractor)
                     .Where(x => x.Contractor.UserName == userName && x.Contractor.Password == password)
                     .FirstOrDefaultAsync(m => m.Id == id);
                 return View(jobListingModel);
