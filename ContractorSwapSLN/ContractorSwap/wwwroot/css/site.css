@@ -134,7 +134,8 @@ p {
     background-color: #F2D1B3;
     opacity: 0.75;
     padding: 15px;
-    border-radius: 10px
+    border-radius: 10px;
+    border: 5px solid #F2EFE9;
 }
 #JobListingIndexTable {
     background-color: antiquewhite;
@@ -149,9 +150,9 @@ p {
     border-radius: 15px;
     background-color: #403732;
     color: #F2D1B3;
+    border: 5px solid #F2EFE9;
     opacity: 0.95;
     transition: transform .2s
-     
 }
 #JobListingsCard:hover {
     transform: scale(1.075);   
@@ -195,8 +196,9 @@ a.nostyle:visited{
     right: 16px;
     background-color: #403732;
     padding: 10px;
-    border-radius:10px;
-    opacity:0.90
+    border: 2px solid #F2EFE9;
+    border-radius: 10px;
+    opacity: 0.90
 }
 #PostNewJobBtn {
     background-color: #403732;
