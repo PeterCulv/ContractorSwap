@@ -11,12 +11,11 @@ namespace ContractorSwap.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = "Server=(localdb)\\mssqllocaldb;Database=ContractorSwap6;Trusted_Connection=True;";
+            string connectionString = "Server=(localdb)\\mssqllocaldb;Database=ContractorSwap7;Trusted_Connection=True;";
             optionsBuilder.UseSqlServer(connectionString);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            
+        {           
              modelBuilder.Entity<ApplicationModel>()
                 .HasOne(a => a.JobListing)
                 .WithMany()
@@ -29,45 +28,45 @@ namespace ContractorSwap.Data
                 .HasForeignKey(a => a.ContractorId)
                 .OnDelete(DeleteBehavior.NoAction);
 
-             modelBuilder.Entity<ContractorModel>().HasData(
-                 new ContractorModel()
-                 {
-                     Id = 1,
-                     Name = "John Deere",
-                     Carpentery = true,
-                     Plumbing = true,
-                     General = false,
-                     Electrical = false,
-                     Address = "baluga",
-                     City = "Columbus",
-                     State = "Ohio",
-                     Zip = "55555",
-                     Email = "email",
-                     Phone = "5555555555",
-                     UserName = "johndeere123",
-                     Password = "deerebutstillgoated",    
-                     Specialties = new List<string> { "Carpentry", "Plumbing" }
-                 },
-                 new ContractorModel()
-                 {
-                     Id = 2,
-                     Name = "Francis Charlery",
-                     Carpentery = false,
-                     Plumbing = false,
-                     General = true,
-                     Electrical = true,
-                     Address = "baluga",
-                     City = "Columbus",
-                     State = "Ohio",
-                     Zip = "55555",
-                     Email = "email",
-                     Phone = "5555555555",
-                     UserName = "frantheman",
-                     Password = "francis456",
-                     Specialties = new List<string> { "General", "Electrical" }
+           
+            modelBuilder.Entity<ContractorModel>().HasData(
+
+                new ContractorModel()
+                {
+                    Id = 1,
+                    Name = "John Deere",
+                    Carpentery = true,
+                    Plumbing = true,
+                    General = false,
+                    Electrical = false,
+                    Address = "baluga",
+                    City = "Columbus",
+                    State = "Ohio",
+                    Zip = "55555",
+                    Email = "email",
+                    Phone = "5555555555",
+                    UserName = "johndeere123",
+                    Password = "deerebutstillgoated",
+                },
+                new ContractorModel()
+                {
+                    Id = 2,
+                    Name = "Francis Charlery",
+                    Carpentery = false,
+                    Plumbing = false,
+                    General = true,
+                    Electrical = true,
+                    Address = "baluga",
+                    City = "Columbus",
+                    State = "Ohio",
+                    Zip = "55555",
+                    Email = "email",
+                    Phone = "5555555555",
+                    UserName = "frantheman",
+                    Password = "francis456",                    
 
 
-                 });
+                }) ;
               modelBuilder.Entity<JobListingModel>().HasData(
                  new JobListingModel()
                  {

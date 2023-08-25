@@ -40,8 +40,8 @@ namespace ContractorSwap.Models
 
         [Required]
         public string Password { get; set; }
-        
-        public List<string> Specialties { get; set; }
+        [NotMapped]
+        public List<string> Specialties { get; set; } = new List<string>();
         public void AddSpecialties()
         {
             Specialties.Clear();

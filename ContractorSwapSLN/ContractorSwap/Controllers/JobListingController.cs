@@ -64,7 +64,8 @@ namespace ContractorSwap.Controllers
             {
 
                 var jobListingModel = await _context.Jobs.Include(x => x.Contractor)
-                    .Where(x => x.Contractor.UserName != userName && x.Contractor.Password != password)
+                    .Include(x => x.Applications)
+                    .Where(x => x.Contractor.UserName == userName && x.Contractor.Password == password)
                     .FirstOrDefaultAsync(m => m.Id == id);
                 return View(jobListingModel);
             }

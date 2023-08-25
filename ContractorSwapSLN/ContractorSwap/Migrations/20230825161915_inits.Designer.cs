@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContractorSwap.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230821152934_trial")]
-    partial class trial
+    [Migration("20230825161915_inits")]
+    partial class inits
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,6 +38,9 @@ namespace ContractorSwap.Migrations
 
                     b.Property<int>("ContractorId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("JobListingId")
                         .HasColumnType("int");
@@ -64,6 +67,7 @@ namespace ContractorSwap.Migrations
                             Id = 1,
                             Bid = 750.0,
                             ContractorId = 2,
+                            Date = new DateTime(2023, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             JobListingId = 1,
                             accepted = false
                         },
@@ -72,6 +76,7 @@ namespace ContractorSwap.Migrations
                             Id = 2,
                             Bid = 5800.0,
                             ContractorId = 1,
+                            Date = new DateTime(2023, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             JobListingId = 2,
                             accepted = false
                         });
@@ -85,9 +90,26 @@ namespace ContractorSwap.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Location")
+                    b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Carpentery")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Electrical")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("General")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -97,11 +119,22 @@ namespace ContractorSwap.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Specialties")
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Plumbing")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("State")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Zip")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -113,20 +146,36 @@ namespace ContractorSwap.Migrations
                         new
                         {
                             Id = 1,
-                            Location = "Grand Detour, Illinois",
+                            Address = "baluga",
+                            Carpentery = true,
+                            City = "Columbus",
+                            Electrical = false,
+                            Email = "email",
+                            General = false,
                             Name = "John Deere",
                             Password = "deerebutstillgoated",
-                            Specialties = "Landscaping",
-                            UserName = "johndeere123"
+                            Phone = "5555555555",
+                            Plumbing = true,
+                            State = "Ohio",
+                            UserName = "johndeere123",
+                            Zip = "55555"
                         },
                         new
                         {
                             Id = 2,
-                            Location = "Hartford, Connecticut",
+                            Address = "baluga",
+                            Carpentery = false,
+                            City = "Columbus",
+                            Electrical = true,
+                            Email = "email",
+                            General = true,
                             Name = "Francis Charlery",
                             Password = "francis456",
-                            Specialties = "Carpenrty",
-                            UserName = "frantheman"
+                            Phone = "5555555555",
+                            Plumbing = false,
+                            State = "Ohio",
+                            UserName = "frantheman",
+                            Zip = "55555"
                         });
                 });
 
@@ -137,6 +186,20 @@ namespace ContractorSwap.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Carpentery")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CompletionDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("ContractorId")
                         .HasColumnType("int");
@@ -149,14 +212,27 @@ namespace ContractorSwap.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("Electrical")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("General")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("Plumbing")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Zip")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -168,20 +244,36 @@ namespace ContractorSwap.Migrations
                         new
                         {
                             Id = 1,
+                            Address = "baluga",
+                            Carpentery = false,
+                            City = "Columbus",
+                            CompletionDate = new DateTime(2023, 9, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ContractorId = 1,
                             Date = new DateTime(2019, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Ceiling fan installation: Master Bedroom",
-                            Location = "666 Elm Street, Aurora, IL",
-                            Name = "Test Job"
+                            Electrical = false,
+                            General = true,
+                            Name = "Test Job",
+                            Plumbing = false,
+                            State = "Ohio",
+                            Zip = "55555"
                         },
                         new
                         {
                             Id = 2,
+                            Address = "baluga",
+                            Carpentery = false,
+                            City = "Columbus",
+                            CompletionDate = new DateTime(2023, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ContractorId = 2,
                             Date = new DateTime(2023, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Install a hot tub for a Chihuaha",
-                            Location = "1111 Hampton Hills Ct., Hamptons, CT",
-                            Name = "Secondary Job"
+                            Electrical = true,
+                            General = true,
+                            Name = "Secondary Job",
+                            Plumbing = false,
+                            State = "Ohio",
+                            Zip = "55555"
                         });
                 });
 
