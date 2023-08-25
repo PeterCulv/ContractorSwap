@@ -66,9 +66,12 @@ namespace ContractorSwap.Controllers
         {
             if (Request.Cookies.ContainsKey("UserCookie") && Request.Cookies.ContainsKey("PasswordCookie"))
             {
+                
                 string userName = Request.Cookies["UserCookie"];
                 string password = Request.Cookies["PasswordCookie"];
                 var contractorModel = await _context.Contractors.Where(x => x.UserName == userName && x.Password == password).FirstOrDefaultAsync();
+                contractorModel.Specialties = new List<string>();
+                contractorModel.AddSpecialties();
                 return View(contractorModel);
             }
 
@@ -90,10 +93,12 @@ namespace ContractorSwap.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Specialties,Location,UserName,Password")] ContractorModel contractorModel)
+        public async Task<IActionResult> Create(ContractorModel contractorModel)
         {
             if (ModelState.IsValid)
             {
+                contractorModel.Specialties = new List<string>();
+                contractorModel.AddSpecialties();
                 _context.Add(contractorModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -101,7 +106,7 @@ namespace ContractorSwap.Controllers
             return View(contractorModel);
         }
         public IActionResult Register()
-        {
+        {            
             return View();
         }
 
@@ -110,7 +115,7 @@ namespace ContractorSwap.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register([Bind("Id,Name,Specialties,Location,UserName,Password")] ContractorModel contractorModel)
+        public async Task<IActionResult> Register(ContractorModel contractorModel)
         {
             if (Request.Cookies.ContainsKey("UserCookie") && Request.Cookies.ContainsKey("PasswordCookie"))
             {
@@ -124,9 +129,12 @@ namespace ContractorSwap.Controllers
                     return RedirectToAction("Login", "Contractor");
                 }
             }
-
+            //contractorModel.Specialties = new List<string> {"hi"};
             if (ModelState.IsValid)
             {
+                
+                contractorModel.AddSpecialties();
+                CreateUser(contractorModel.UserName, contractorModel.Password);
                 _context.Add(contractorModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
@@ -185,6 +193,7 @@ namespace ContractorSwap.Controllers
             {
                 return NotFound();
             }
+            
             return View(contractorModel);
         }
 
@@ -193,7 +202,7 @@ namespace ContractorSwap.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Specialties,Location,UserName,Password")] ContractorModel contractorModel)
+        public async Task<IActionResult> Edit(int id, ContractorModel contractorModel)
         {
             if (id != contractorModel.Id)
             {
@@ -204,6 +213,7 @@ namespace ContractorSwap.Controllers
             {
                 try
                 {
+                    contractorModel.AddSpecialties();
                     _context.Update(contractorModel);
                     await _context.SaveChangesAsync();
                 }
