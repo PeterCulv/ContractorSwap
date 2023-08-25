@@ -111,30 +111,17 @@ footer {
 /*End of Slider Section*/
 /*Minor Font Work*/
 
-.nav-item {
-    font-family: 'Roboto', sans-serif;
-}
-
 h1 {
     font-family: 'Roboto', sans-serif;
 }
 
-.h1-ptag {
+h5 {
     font-family: 'Roboto', sans-serif;
 }
 
-.card-title {
-    font-family: 'Roboto', sans-serif;
+p {
+    font-family: 'Lato', sans-serif;
 }
-
-.card-text {
-    font-family: 'Roboto', sans-serif;
-}
-
-.midtext-zz {
-    font-family: 'Roboto', sans-serif;
-}
-
 
 #JobListingIndexPage {
     width: 100%;
