@@ -5,77 +5,29 @@
 }
 
 <body class="bg-image" id="JobListingIndexPage">
-<div class="row justify-content-center">
-    <div class="col-4 text-center mt-5 mb-5" id="JobListingIndexTitle">
-        <h1>Job Listings</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center mt-4 mb-4" id="JobListingIndexTitle">
+            <h1 id="JobListingsTitleText"style="color: #403732; font-weight: 700">Job Listings</h1>
 
-        <p>
-            <a asp-action="Create">Add a New Job</a>
-        </p>
-     </div>
-</div>
-@*<div class="p-1" id="JobListingIndexTable">
-    <table class="table table-hover border-dark">
-        <thead class="table-dark">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Date)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Location)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    Posting Contractor
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-    <tbody>*@
-        <div class="row flex-lg-wrap" id="CardListings">
-            @foreach (var item in Model) {
-            
-                <div class="card col-3" style="width: 18rem; margin: 25px; padding: 0px;">
-                        <img class="card-img-top" src="~/Images/Hi-Res Tools surround.jpg" alt="Job Type Image">
-                            <div class="card-body">
-                                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
-                                <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
-                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
-                                <a>@item.DaysSince()</a>
-                </div>
-                </div>
-                
-            }
         </div>
-@*<tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Location)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Contractor.Name)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>*@
+    </div>
+    <div class="row" id="CardListings">
+        @foreach (var item in Model) {
+           <div class="card col-4 flex-md-wrap" id="JobListingsCard" style="width: 18rem; margin: 45px; padding: 5px;">
+                <a asp-action="Details" asp-route-id="@item.Id" class="nostyle">
+                <div class="card-container">
+                    <img class="card-img-top" id="JobListingsCardImage" src="~/Images/Hi-Res Tools surround.jpg" alt="Job Type Image">
+                    <div class="top-right">
+                        @item.DaysSince()
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #F2EFEB">@Html.DisplayFor(modelItem => item.Name)</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                </div>
+                </a>
+           </div>
+            }
+    </div>
 
-        </tbody>
-    </table>
-</div>
 </body>

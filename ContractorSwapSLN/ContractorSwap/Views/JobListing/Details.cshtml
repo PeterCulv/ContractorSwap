@@ -42,6 +42,7 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> 
+    <a asp-controller="Application" asp-action="Create" asp-route-jobListingId="@Model?.Id">Apply</a>
     <a asp-action="Index">Back to List</a>
 </div>

@@ -107,6 +107,7 @@ footer {
     }
 }
 
+
 /*End of Slider Section*/
 /*Minor Font Work*/
 
@@ -119,7 +120,7 @@ h1 {
 }
 
 .h1-ptag {
-    font-family: 'Caprasimo', cursive;
+    font-family: 'Roboto', sans-serif;
 }
 
 .card-title {
@@ -127,27 +128,90 @@ h1 {
 }
 
 .card-text {
-    font-family: 'Caprasimo', cursive;
+    font-family: 'Roboto', sans-serif;
 }
 
 .midtext-zz {
-    font-family: 'Caprasimo', cursive;
+    font-family: 'Roboto', sans-serif;
 }
 
-#JobListingIndexPage{
+
+#JobListingIndexPage {
     width: 100%;
-    background-image: url('../Images/Hi-Res Tools surround.jpg');
-    background-repeat:no-repeat;
+    background-image: url('../img/woodworkingbackground.jpg');
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
-#JobListingIndexTitle{
-    background-color: antiquewhite;
-    opacity: 0.80;
+#JobListingIndexTitle {
+    background-color: #F2D1B3;
+    opacity: 0.75;
+    padding: 15px;
     border-radius: 10px
 }
 #JobListingIndexTable {
     background-color: antiquewhite;
     opacity: 0.80;
     border-radius: 10px
+}
+#CardListings{
+    display: flex;
+    justify-content:space-around;
+}
+#JobListingsCard {
+    border-radius: 15px;
+    background-color: #403732;
+    color: #F2D1B3;
+    opacity: 0.95;
+    transition: transform .2s
+     
+}
+#JobListingsCard:hover {
+    transform: scale(1.075);   
+}
+#JobListingCard{
+    position: relative;
+    
+}
+#JobListingCard a::before{
+    content:"";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
+#JobListingsCardImage {
+    border-radius: 10px;
+}
+#JobListingsTitleText{
+    font-size: 51px;
+}
+a.nostyle:link{
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+a.nostyle:visited{
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+.card-container{
+    position:relative;
+    text-align:center;
+}
+.top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    background-color: #403732;
+    padding: 10px;
+    border-radius:10px;
+    opacity:0.90
+}
+#PostNewJobBtn {
+    background-color: #403732;
+    color: #F2D1B3;
 }

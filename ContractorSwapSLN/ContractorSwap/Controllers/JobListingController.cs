@@ -47,7 +47,7 @@ namespace ContractorSwap.Controllers
 
             var jobListings = await _context.Jobs
                     .Include(x => x.Contractor)
-                    .Where(x => x.Contractor.UserName != userName && x.Contractor.Password != password)
+                    //.Where(x => x.Contractor.UserName != userName && x.Contractor.Password != password)
                     .ToListAsync();
 
             return View(jobListings);
@@ -64,7 +64,7 @@ namespace ContractorSwap.Controllers
             {
 
                 var jobListingModel = await _context.Jobs.Include(x => x.Contractor)
-                    .Where(x => x.Contractor.UserName != userName && x.Contractor.Password != password)
+                    .Where(x => x.Contractor.UserName == userName && x.Contractor.Password == password)
                     .FirstOrDefaultAsync(m => m.Id == id);
                 return View(jobListingModel);
             }
@@ -98,7 +98,7 @@ namespace ContractorSwap.Controllers
             {
                 return View();
             }
-            else { return RedirectToAction("Create", "Contractor"); }
+            else { return RedirectToAction("Login", "Contractor"); }
         }
 
         // POST: JobListing/Create
@@ -118,7 +118,7 @@ namespace ContractorSwap.Controllers
                     jobListingModel.ContractorId = contractor.Id;
                     _context.Add(jobListingModel);
                     await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction("MyIndex", "Contractor");
                 }
                 return View(jobListingModel);
             
@@ -151,7 +151,7 @@ namespace ContractorSwap.Controllers
             {
                 _context.Update(jobListingModel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("MyDetails", new {id=id});
             }
              return View(jobListingModel);
         }

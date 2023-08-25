@@ -4,12 +4,35 @@
     ViewData["Title"] = "MyIndex";
 }
 
-<h1>MyIndex</h1>
+<body class="bg-image" id="JobListingIndexPage">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 col-md-4 text-center mt-5 mb-5" id="JobListingIndexTitle">
+            <h1 id="JobListingsTitleText" style="color: #403732; font-weight: 700">My Jobs</h1>
+            <a asp-action="Create" class="btn btn-primary" id="PostNewJobBtn">Post New Job</a>
+        </div>
+    </div>
+    <div class="row" id="CardListings">
+        @foreach (var item in Model)
+        {
+            <div class="card col-4 flex-md-wrap" id="JobListingsCard" style="width: 18rem; margin: 45px; padding: 5px;">
+                <a asp-action="MyDetails" asp-route-id="@item.Id" class="nostyle">
+                    <div class="card-container">
+                        <img class="card-img-top" id="JobListingsCardImage" src="~/Images/Hi-Res Tools surround.jpg" alt="Job Type Image">
+                        <div class="top-right">
+                            @item.DaysSince()
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #F2EFEB">@Html.DisplayFor(modelItem => item.Name)</h5>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+</body>
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -54,4 +77,4 @@
         </tr>
 }
     </tbody>
-</table>
+</table>*@
