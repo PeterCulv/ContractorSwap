@@ -16,6 +16,7 @@ namespace ContractorSwap.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
              modelBuilder.Entity<ApplicationModel>()
                 .HasOne(a => a.JobListing)
                 .WithMany()

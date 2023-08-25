@@ -34,7 +34,10 @@
                 @Html.DisplayFor(modelItem => item.accepted)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Contractor.Location)
+                @Html.DisplayFor(modelItem => item.Contractor.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contractor.State)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
