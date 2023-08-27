@@ -54,6 +54,7 @@ namespace ContractorSwap.Controllers
 
             var applicationModel = await _context.Applications
                 .Include(a => a.Contractor)
+                .Include(a =>a.JobListing)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (applicationModel == null)
             {

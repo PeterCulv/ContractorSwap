@@ -3,7 +3,12 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+@{
+    bool carpentry = true;
+    bool plumbing = true;
+    bool general = true;
+    bool electrical = true;
+}
 <body class="bg-image" id="JobListingIndexPage">
     <div class="row justify-content-center">
         <div class="col-md-4 text-center mt-4 mb-4" id="JobListingIndexTitle">
@@ -11,6 +16,11 @@
 
         </div>
     </div>
+    <div>
+        <input type="checkbox" />
+        Carpentry: @carpentry Plumbing: @plumbing General: @general Electrical: @electrical
+    </div>
+    
     <div class="row" id="CardListings">
         @foreach (var item in Model) {
            <div class="card col-4 flex-md-wrap" id="JobListingsCard" style="width: 18rem; margin: 45px; padding: 5px;">

@@ -7,7 +7,6 @@
 <h1>Details</h1>
 
 <div>
-    <h4>ApplicationModel</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -23,17 +22,23 @@
             @Html.DisplayFor(model => model.accepted)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Contractor)
+            @Html.DisplayNameFor(model => model.JobListing)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Contractor.State)
+            @Html.DisplayFor(model => model.JobListing.Name)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JobListing.City)
+        </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Contractor.City)
+            @Html.DisplayFor(model => model.JobListing.City)
+            , 
+            @Html.DisplayFor(model => model.JobListing.State)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> 
+    <a asp-controller="JobListing" asp-action="Details" asp-route-id="@Model.JobListingId">Go To Job</a>
     <a asp-action="Index">Back to List</a>
 </div>

@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Job Listing</h1>
+<h1>Job Details</h1>
 
 <div>
     <hr />
@@ -55,8 +55,7 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> 
+<div> 
     <a asp-controller="Application" asp-action="Create" asp-route-jobListingId="@Model?.Id">Apply</a>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to Jobs</a>
 </div>
