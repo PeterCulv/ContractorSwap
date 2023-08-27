@@ -108,6 +108,7 @@ namespace ContractorSwap.Controllers
             {
                 return NotFound();
             }
+            
             ViewData["ContractorId"] = new SelectList(_context.Contractors, "Id", "Location", applicationModel.ContractorId);
             return View(applicationModel);
         }
@@ -142,7 +143,7 @@ namespace ContractorSwap.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(MyIndex));
             }
             ViewData["ContractorId"] = new SelectList(_context.Contractors, "Id", "Location", applicationModel.ContractorId);
             return View(applicationModel);
@@ -183,7 +184,7 @@ namespace ContractorSwap.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(MyIndex));
         }
 
         private bool ApplicationModelExists(int id)

@@ -15,7 +15,7 @@ namespace ContractorSwap.Models
 
         [Required]
         public DateTime Date { get; set; } = DateTime.Now;
-        public DateTime CompletionDate { get; set; }
+        public DateTime CompletionDate { get; set; } = DateTime.Now;
         public string DaysSince()
         {
             DateTime today = DateTime.Now;
@@ -72,6 +72,6 @@ namespace ContractorSwap.Models
         public int ContractorId { get; set; }
         public virtual ContractorModel? Contractor { get; set; }
 
-        public virtual IEnumerable<ApplicationModel>? Applications { get; set; }    
+        public virtual ICollection<ApplicationModel>? Applications { get; set; }    
     }
 }
