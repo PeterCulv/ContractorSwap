@@ -28,6 +28,7 @@ namespace ContractorSwap.Controllers
             if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
             {
                 var jobListings = await _context.Jobs
+                                       
                     .Include(x => x.Contractor)
                     .Where(x => x.Contractor.UserName == userName && x.Contractor.Password == password)
                     .ToListAsync();
@@ -47,7 +48,7 @@ namespace ContractorSwap.Controllers
 
             var jobListings = await _context.Jobs
                     .Include(x => x.Contractor)
-                    //.Where(x => x.Contractor.UserName != userName && x.Contractor.Password != password)
+                    .Where(x => x.Contractor.UserName != userName && x.Contractor.Password != password)
                     .ToListAsync();
 
             return View(jobListings);
@@ -63,9 +64,11 @@ namespace ContractorSwap.Controllers
             if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
             {
 
-                var jobListingModel = await _context.Jobs.Include(x => x.Contractor)
-                    .Where(x => x.Contractor.UserName == userName && x.Contractor.Password == password)
-                    .FirstOrDefaultAsync(m => m.Id == id);
+                var jobListingModel = await _context.Jobs
+                   // .Include(x => x.Contractor)
+                   // .Where(x => x.Contractor.UserName == userName && x.Contractor.Password == password)
+                    .Include(x => x.Applications)                   
+                    .FirstOrDefaultAsync(/*m => m.Id == id*/);
                 return View(jobListingModel);
             }
             else
@@ -76,19 +79,24 @@ namespace ContractorSwap.Controllers
         }
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Jobs == null)
+            string userName = Request.Cookies["UserCookie"];
+            string password = Request.Cookies["PasswordCookie"];
+            if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
             {
-                return NotFound();
-            }
-
-            var jobListingModel = await _context.Jobs.Include(x => x.Contractor)
+                var jobListingModel = await _context.Jobs.Include(x => x.Contractor)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (jobListingModel == null)
+
+
+                return View(jobListingModel);
+
+            }
+            else
             {
-                return NotFound();
+                // Redirect or display an error message if the cookies are not set
+                return RedirectToAction("Create", "Contractor"); // Replace with appropriate action and controller names
             }
 
-            return View(jobListingModel);
+            
         }
 
         // GET: JobListing/Create
@@ -96,7 +104,10 @@ namespace ContractorSwap.Controllers
         {
             if (Request.Cookies.ContainsKey("UserCookie") && Request.Cookies.ContainsKey("PasswordCookie"))
             {
-                return View();
+                JobListingModel job = new JobListingModel();
+                job.Date = DateTime.Now;
+                job.CompletionDate = DateTime.Today;
+                return View(job);
             }
             else { return RedirectToAction("Login", "Contractor"); }
         }
@@ -109,7 +120,7 @@ namespace ContractorSwap.Controllers
         public async Task<IActionResult> Create(JobListingModel jobListingModel)
         {
             
-                if (ModelState.IsValid)
+            if (ModelState.IsValid)
                 {
                     string userName = Request.Cookies["UserCookie"];
                     string password = Request.Cookies["PasswordCookie"];
@@ -118,8 +129,8 @@ namespace ContractorSwap.Controllers
                     jobListingModel.ContractorId = contractor.Id;
                     _context.Add(jobListingModel);
                     await _context.SaveChangesAsync();
-                    return RedirectToAction("MyIndex", "Contractor");
-                }
+                return RedirectToAction("MyIndex", new { id = contractor.Id });
+            }
                 return View(jobListingModel);
             
         }
@@ -136,7 +147,7 @@ namespace ContractorSwap.Controllers
             if (jobListingModel == null)
             {
                 return NotFound();
-            }
+            }           
             return View(jobListingModel);
         }
 

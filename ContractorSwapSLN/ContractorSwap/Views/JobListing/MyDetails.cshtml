@@ -17,16 +17,37 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Date)
+            <p>Job Date</p>
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Date)
+            @{
+                var d = Model.CompletionDate.ToShortDateString();
+            }
+            <p>@d</p>
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Location)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Location)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Zip)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Zip)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
@@ -34,7 +55,30 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
-        
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Contractor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Contractor.Name)
+        </dd>
+        <h4>Applications: @Model.Applications.Count()</h4>
+        @foreach(var app in Model.Applications)
+        {            
+            <div>
+                <div>
+                    @Html.DisplayFor(modelItem => app.Contractor.Name)
+                </div>
+                <p>
+                    @Html.DisplayFor(modelItem => app.Date)
+                </p>
+                <div>
+                    @Html.DisplayFor(modelItem => app.Bid)
+                </div>
+                <div>
+                    @Html.DisplayFor(modelItem => app.accepted)
+                </div>
+            </div>
+        }
     </dl>
 </div>
 <div>

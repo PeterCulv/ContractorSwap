@@ -54,6 +54,7 @@ namespace ContractorSwap.Controllers
 
             var applicationModel = await _context.Applications
                 .Include(a => a.Contractor)
+                .Include(a =>a.JobListing)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (applicationModel == null)
             {
@@ -108,6 +109,7 @@ namespace ContractorSwap.Controllers
             {
                 return NotFound();
             }
+            
             ViewData["ContractorId"] = new SelectList(_context.Contractors, "Id", "Location", applicationModel.ContractorId);
             return View(applicationModel);
         }
@@ -117,7 +119,7 @@ namespace ContractorSwap.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Bid,accepted,ContractorId")] ApplicationModel applicationModel)
+        public async Task<IActionResult> Edit(int id, ApplicationModel applicationModel)
         {
             if (id != applicationModel.Id)
             {
@@ -142,7 +144,7 @@ namespace ContractorSwap.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(MyIndex));
             }
             ViewData["ContractorId"] = new SelectList(_context.Contractors, "Id", "Location", applicationModel.ContractorId);
             return View(applicationModel);
@@ -183,7 +185,7 @@ namespace ContractorSwap.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(MyIndex));
         }
 
         private bool ApplicationModelExists(int id)
