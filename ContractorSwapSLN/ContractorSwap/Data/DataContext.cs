@@ -236,9 +236,73 @@ namespace ContractorSwap.Data
                  new ApplicationModel()
                  {
                      Id = 2,
-                     Bid = 5800.00,
+                     Bid = 800.00,
                      JobListingId = 2,
                      ContractorId = 1,
+                     Date = new DateTime(2023, 07, 23)
+                 },
+                 new ApplicationModel()
+                 {
+                     Id = 3,
+                     Bid = 1200.00,
+                     JobListingId = 4,
+                     ContractorId = 3,
+                     Date = new DateTime(2023, 06, 23)
+                 },
+                 new ApplicationModel()
+                 {
+                     Id = 4,
+                     Bid = 5800.00,
+                     JobListingId = 5,
+                     ContractorId = 3,
+                     Date = new DateTime(2023, 07, 23)
+                 },
+                 new ApplicationModel()
+                 {
+                     Id = 5,
+                     Bid = 850.00,
+                     JobListingId = 3,
+                     ContractorId = 3,
+                     Date = new DateTime(2023, 06, 23)
+                 },
+                 new ApplicationModel()
+                 {
+                     Id = 6,
+                     Bid = 3350.00,
+                     JobListingId = 7,
+                     ContractorId = 1,
+                     Date = new DateTime(2023, 07, 23)
+                 },
+                 new ApplicationModel()
+                 {
+                     Id = 7,
+                     Bid = 825.00,
+                     JobListingId = 3,
+                     ContractorId = 2,
+                     Date = new DateTime(2023, 06, 23)
+                 },
+                 new ApplicationModel()
+                 {
+                     Id = 8,
+                     Bid = 875.00,
+                     JobListingId = 3,
+                     ContractorId = 1,
+                     Date = new DateTime(2023, 07, 23)
+                 },
+                 new ApplicationModel()
+                 {
+                     Id = 9,
+                     Bid = 750.00,
+                     JobListingId = 3,
+                     ContractorId = 4,
+                     Date = new DateTime(2023, 06, 23)
+                 },
+                 new ApplicationModel()
+                 {
+                     Id = 10,
+                     Bid = 5800.00,
+                     JobListingId = 6,
+                     ContractorId = 4,
                      Date = new DateTime(2023, 07, 23)
                  });
 
