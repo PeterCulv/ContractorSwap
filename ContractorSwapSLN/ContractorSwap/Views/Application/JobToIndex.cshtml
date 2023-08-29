@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ContractorSwap.Models.ApplicationModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "JobToIndex";
 }
 
-<h1>Index</h1>
+<h1>JobToIndex</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -17,6 +17,12 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.accepted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobListing)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Contractor)
@@ -34,10 +40,13 @@
                 @Html.DisplayFor(modelItem => item.accepted)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Contractor.City)
+                @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Contractor.State)
+                @Html.DisplayFor(modelItem => item.JobListing.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contractor.Address)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

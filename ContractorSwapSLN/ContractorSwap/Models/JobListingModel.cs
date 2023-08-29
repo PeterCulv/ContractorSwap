@@ -15,6 +15,7 @@ namespace ContractorSwap.Models
 
         [Required]
         public DateTime Date { get; set; } = DateTime.Now;
+        public DateTime CompletionDate { get; set; } = DateTime.Now;
         public string DaysSince()
         {
             DateTime today = DateTime.Now;
@@ -51,17 +52,26 @@ namespace ContractorSwap.Models
         }
 
         [Required]
-        public string Location { get; set; }
+        public string Address { get; set; }
+        [Required] 
+        public string City { get; set; }
+        [Required] 
+        public string Zip { get; set; }
+        [Required] 
+        public string State { get; set; }
 
         [Required]
         [StringLength(500)]
         public string Description { get; set; }
+        public bool Carpentery { get; set; } = false;
+        public bool Plumbing { get; set; } = false;
+        public bool General { get; set; } = false;
+        public bool Electrical { get; set; } = false;
 
-        
         [ForeignKey("ContractorId")]
         public int ContractorId { get; set; }
         public virtual ContractorModel? Contractor { get; set; }
 
-        public virtual IEnumerable<ApplicationModel>? Applications { get; set; }    
+        public virtual ICollection<ApplicationModel>? Applications { get; set; }  //  = new List<ApplicationModel>();
     }
 }

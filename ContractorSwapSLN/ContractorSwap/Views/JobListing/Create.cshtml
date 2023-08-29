@@ -7,9 +7,8 @@
 <h1>Create a Job Listing!</h1>
 
 
-<hr />
-<div class="row">
-    <div class="create-page">
+
+<div class="row justify-content-center m-4">    
     <div class="col-md-4">
         <div class="app-form-container">
         <form asp-action="Create">
@@ -20,15 +19,59 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
-                <span asp-validation-for="Date" class="text-danger"></span>
+                <label class="control-label">Job Date</label>
+                <input asp-for="CompletionDate" class="form-control" />
+                <span asp-validation-for="CompletionDate" class="text-danger"></span>
+            </div>
+                <div class="form-group"> 
+                    <input type="hidden" asp-for="Date" class="form-control" />                     
+                </div>
+            <div class="form-group">
+                    <label asp-for="Address" class="control-label"></label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span> 
             </div>
             <div class="form-group">
-                <label asp-for="Location" class="control-label"></label>
-                <input asp-for="Location" class="form-control" />
-                <span asp-validation-for="Location" class="text-danger"></span> 
+                <label asp-for="State" class="control-label"></label>
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-danger"></span>
             </div>
+            
+            <div class="form-group">
+                <label asp-for="Zip" class="control-label"></label>
+                <input asp-for="Zip" class="form-control" />
+                <span asp-validation-for="Zip" class="text-danger"></span>
+            </div>
+                    <div class="form-group">
+                        <label class="control-label">Work Type</label>
+
+                        <div class="form-check">
+                            <input type="checkbox" asp-for="Plumbing" class="form-check-input" />
+                            <label class="form-check-label">Pumbling</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="checkbox" asp-for="Carpentery" class="form-check-input" />
+                            <label class="form-check-label">Carpentry</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="checkbox" asp-for="General" class="form-check-input" />
+                            <label class="form-check-label">General</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="checkbox" asp-for="Electrical" class="form-check-input" />
+                            <label class="form-check-label">Electrical</label>
+                        </div>
+
+                        @*<span asp-validation-for="Specialties" class="text-danger"></span>*@
+                    </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
                 <input asp-for="Description" class="form-control" />
@@ -40,27 +83,22 @@
                 <div class="form-group-btn">
                         <input type="submit" value="Create" class="btn btn-primary btn-hover-effect" />
                 </div>
+                    <div class="home-btn">
+                        <a href="/JobListing/MyIndex" class="btn btn-primary btn-hover-effect">Back to My Jobs</a>
+                    </div>
         </form>
         </div>
     </div>
 </div>
 </div>
-<div>
-    <a asp-action="MyIndex">Back to My Jobs</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
 <style>
 
-    .create-page {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin-top: -200px;
-    }
+    
 
     h1 {
         margin-top: 40px;
@@ -82,7 +120,10 @@
         opacity: 95%;
         color: #FFFBE0;
     }
-
+    .home-btn{
+        display: flex;
+        justify-content: center;
+    }
    
 
     body {

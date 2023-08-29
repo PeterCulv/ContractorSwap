@@ -8,7 +8,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ContractorSwap.Migrations
 {
     /// <inheritdoc />
-    public partial class trial : Migration
+<<<<<<<< HEAD:ContractorSwapSLN/ContractorSwap/Migrations/20230828182656_initssd.cs
+    public partial class initssd : Migration
+========
+    public partial class initial : Migration
+>>>>>>>> f3a7d28f7b86e62984e763b60c8263f9327b575b:ContractorSwapSLN/ContractorSwap/Migrations/20230828115008_initial.cs
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,8 +24,16 @@ namespace ContractorSwap.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Specialties = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Carpentery = table.Column<bool>(type: "bit", nullable: false),
+                    Plumbing = table.Column<bool>(type: "bit", nullable: false),
+                    General = table.Column<bool>(type: "bit", nullable: false),
+                    Electrical = table.Column<bool>(type: "bit", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Zip = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -38,8 +50,16 @@ namespace ContractorSwap.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CompletionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Zip = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Carpentery = table.Column<bool>(type: "bit", nullable: false),
+                    Plumbing = table.Column<bool>(type: "bit", nullable: false),
+                    General = table.Column<bool>(type: "bit", nullable: false),
+                    Electrical = table.Column<bool>(type: "bit", nullable: false),
                     ContractorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -61,6 +81,7 @@ namespace ContractorSwap.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Bid = table.Column<double>(type: "float", nullable: false),
                     accepted = table.Column<bool>(type: "bit", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     JobListingId = table.Column<int>(type: "int", nullable: false),
                     ContractorId = table.Column<int>(type: "int", nullable: false),
                     JobListingModelId = table.Column<int>(type: "int", nullable: true)
@@ -87,29 +108,29 @@ namespace ContractorSwap.Migrations
 
             migrationBuilder.InsertData(
                 table: "Contractors",
-                columns: new[] { "Id", "Location", "Name", "Password", "Specialties", "UserName" },
+                columns: new[] { "Id", "Address", "Carpentery", "City", "Electrical", "Email", "General", "Name", "Password", "Phone", "Plumbing", "State", "UserName", "Zip" },
                 values: new object[,]
                 {
-                    { 1, "Grand Detour, Illinois", "John Deere", "deerebutstillgoated", "Landscaping", "johndeere123" },
-                    { 2, "Hartford, Connecticut", "Francis Charlery", "francis456", "Carpenrty", "frantheman" }
+                    { 1, "baluga", true, "Columbus", false, "email", false, "John Deere", "deerebutstillgoated", "5555555555", true, "Ohio", "johndeere123", "55555" },
+                    { 2, "baluga", false, "Columbus", true, "email", true, "Francis Charlery", "francis456", "5555555555", false, "Ohio", "frantheman", "55555" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Jobs",
-                columns: new[] { "Id", "ContractorId", "Date", "Description", "Location", "Name" },
+                columns: new[] { "Id", "Address", "Carpentery", "City", "CompletionDate", "ContractorId", "Date", "Description", "Electrical", "General", "Name", "Plumbing", "State", "Zip" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2019, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ceiling fan installation: Master Bedroom", "666 Elm Street, Aurora, IL", "Test Job" },
-                    { 2, 2, new DateTime(2023, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Install a hot tub for a Chihuaha", "1111 Hampton Hills Ct., Hamptons, CT", "Secondary Job" }
+                    { 1, "baluga", false, "Columbus", new DateTime(2023, 9, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, new DateTime(2019, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ceiling fan installation: Master Bedroom", false, true, "Test Job", false, "Ohio", "55555" },
+                    { 2, "baluga", false, "Columbus", new DateTime(2023, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, new DateTime(2023, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Install a hot tub for a Chihuaha", true, true, "Secondary Job", false, "Ohio", "55555" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Applications",
-                columns: new[] { "Id", "Bid", "ContractorId", "JobListingId", "JobListingModelId", "accepted" },
+                columns: new[] { "Id", "Bid", "ContractorId", "Date", "JobListingId", "JobListingModelId", "accepted" },
                 values: new object[,]
                 {
-                    { 1, 750.0, 2, 1, null, false },
-                    { 2, 5800.0, 1, 2, null, false }
+                    { 1, 750.0, 2, new DateTime(2023, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, null, false },
+                    { 2, 5800.0, 1, new DateTime(2023, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, null, false }
                 });
 
             migrationBuilder.CreateIndex(
