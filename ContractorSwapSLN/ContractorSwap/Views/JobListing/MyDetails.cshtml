@@ -4,64 +4,86 @@
     ViewData["Title"] = "MyDetails";
 }
 
-<h1>MyDetails</h1>
+<div class="row justify-content-center">
+    <div class="col-md-4 text-center mt-4 mb-4 detailsTitle">
+        <h1 class="detailsTitleText">Job Details</h1>
+    </div>
+</div>
 
-<div>
-    <h4>JobListingModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+<div class ="row justify-content-center">    
+    <div class="card w-50 m-4 cardDisplayStyle">
+    <dl class="row m-4">
+            <dt class="col-lg-4 ps-lg-5">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-lg-8">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
+            <dt class="col-lg-4 ps-lg-5">
+            Posted Date
+        </dt>
+       
+            <dd class="col-lg-8">
+            @{
+                var p = Model.Date.ToShortDateString();
+            }
+            @p
+        </dd>
+            <dt class="col-lg-4 ps-lg-5">
             Job Date
         </dt>
-        <dd class = "col-sm-10">
+            
+            <dd class="col-lg-8">
             @{
                 var d = Model.CompletionDate.ToShortDateString();
             }
             @d
         </dd>
-        <dt class="col-sm-2">
+            <dt class="col-lg-4 ps-lg-5">
             @Html.DisplayNameFor(model => model.Address)
         </dt>
-        <dd class="col-sm-10">
+           
+            <dd class="col-lg-8">
             @Html.DisplayFor(model => model.Address)
         </dd>
-        <dt class="col-sm-2">
+            <dt class="col-lg-4 ps-lg-5">
             @Html.DisplayNameFor(model => model.City)
         </dt>
-        <dd class="col-sm-10">
+            
+            <dd class="col-lg-8">
             @Html.DisplayFor(model => model.City)
         </dd>
-        <dt class="col-sm-2">
+            <dt class="col-lg-4 ps-lg-5">
             @Html.DisplayNameFor(model => model.State)
         </dt>
-        <dd class="col-sm-10">
+           
+            <dd class="col-lg-8">
             @Html.DisplayFor(model => model.State)
         </dd>
-        <dt class="col-sm-2">
+            <dt class="col-lg-4 ps-lg-5">
             @Html.DisplayNameFor(model => model.Zip)
         </dt>
-        <dd class="col-sm-10">
+            
+            <dd class="col-lg-8">
             @Html.DisplayFor(model => model.Zip)
         </dd>
-        <dt class = "col-sm-2">
+            <dt class="col-lg-4 ps-lg-5">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
-        <dd class = "col-sm-10">
+            
+            <dd class="col-lg-8">
             @Html.DisplayFor(model => model.Description)
         </dd>
-        <dt class = "col-sm-2">
+            <dt class="col-lg-4 ps-lg-5">
             @Html.DisplayNameFor(model => model.Contractor)
         </dt>
-        <dd class="col-sm-10">
+            
+            <dd class="col-lg-8">
             @Html.DisplayFor(model => model.Contractor.Name)
         </dd>
-        <h4>Applications: @Model.Applications.Count()</h4>
+        @*<hr/>
+        <div class="m-1">
+        <p id="applicationCountTitle">Applications: @Model.Applications.Count()</p>
         @foreach(var app in Model.Applications)
         {            
             <div>
@@ -79,10 +101,23 @@
                 </div>
             </div>
         }
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>|
-    <a asp-action="Delete" asp-route-id="@Model?.Id">Delete</a>|
-    <a asp-action="MyIndex">Back to My Jobs</a>
+            </div>*@
+        </dl>
+        <div class="row m-2 justify-content-center">
+            <div class="col-lg-4 p-2 text-center">
+                <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-display">View Applications</a>
+            </div>
+        </div>
+        <div class="row m-2 justify-content-between">
+            <div class="col-lg-4 p-2 text-center">        
+                <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-display">Edit</a>
+            </div>
+            <div class="col-lg-4 p-2 text-center">
+                <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-display">Delete</a>
+            </div>
+            <div class="col-lg-4 p-2 text-center">
+                <a asp-action="MyIndex" class="btn btn-display">Back to My Jobs</a>
+            </div>
+        </div>
+    </div>
 </div>

@@ -8,7 +8,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ContractorSwap.Migrations
 {
     /// <inheritdoc />
+<<<<<<<< HEAD:ContractorSwapSLN/ContractorSwap/Migrations/20230828182656_initssd.cs
     public partial class initssd : Migration
+========
+    public partial class initial : Migration
+>>>>>>>> f3a7d28f7b86e62984e763b60c8263f9327b575b:ContractorSwapSLN/ContractorSwap/Migrations/20230828115008_initial.cs
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

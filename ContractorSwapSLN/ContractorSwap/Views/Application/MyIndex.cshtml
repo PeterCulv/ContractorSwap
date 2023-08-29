@@ -4,7 +4,7 @@
     ViewData["Title"] = "MyIndex";
 }
 
-<h1>My Applications</h1>
+<h1>Current Applications</h1>
 
 
 <table class="table">
@@ -14,13 +14,16 @@
                 @Html.DisplayNameFor(model => model.Bid)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.accepted)
+                Accepted
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.JobListing)
+                Job Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Contractor)
+                Job Poster
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
             </th>
             <th></th>
         </tr>
@@ -29,7 +32,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Bid)
+                $@Html.DisplayFor(modelItem => item.Bid)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.accepted)
@@ -38,12 +41,17 @@
                 @Html.DisplayFor(modelItem => item.JobListing.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Contractor.Name)
+                @Html.DisplayFor(modelItem => item.JobListing.Contractor.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    @{
+                        var condensedDate = item.Date.ToShortDateString();
+                    }
+                @condensedDate
+            </td>
+            <td>
+                <a asp-controller="JobListing" asp-action="Details" asp-route-id="@item.JobListingId"> Job Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Cancel Application</a>
             </td>
         </tr>
 }

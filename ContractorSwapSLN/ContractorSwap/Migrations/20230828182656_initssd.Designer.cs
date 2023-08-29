@@ -12,8 +12,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContractorSwap.Migrations
 {
     [DbContext(typeof(DataContext))]
+<<<<<<<< HEAD:ContractorSwapSLN/ContractorSwap/Migrations/20230828182656_initssd.Designer.cs
     [Migration("20230828182656_initssd")]
     partial class initssd
+========
+    [Migration("20230828115008_initial")]
+    partial class initial
+>>>>>>>> f3a7d28f7b86e62984e763b60c8263f9327b575b:ContractorSwapSLN/ContractorSwap/Migrations/20230828115008_initial.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
