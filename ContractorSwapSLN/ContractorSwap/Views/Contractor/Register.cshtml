@@ -85,15 +85,17 @@
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Register" class="btn btn-primary btn-hover-effect" />
-            </div>
-             <div class="log-btn">
-              <a href="/Contractor/Login" class="btn btn-hover-effect">I Already Have an Account</a>
-             </div>
-            <div class="home-btn">
-                    <a href="/Home/Index" class="btn btn-hover-effect">Back to Home</a>
-            </div>
+                    <div class="row p-3">
+                        <div class="col-md-4 text-md-start p-2">
+                            <input type="submit" value="Login" class="btn btn-primary btn-hover-effect" />
+                        </div>
+                        <div class="col-md-4 text-md-center p-2">
+                            <a href="/Contractor/Register" class="btn btn-hover-effect">Create An Account</a>
+                        </div>
+                        <div class="col-md-4 text-md-end p-2">
+                            <a href="/Home/Index" class="btn btn-hover-effect">Back to Home</a>
+                        </div>
+                    </div>
         </form>
     </div>
 </div>

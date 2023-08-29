@@ -24,14 +24,16 @@
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div class="form-group-btn">
+            <div class="row p-3">
+            <div class="col-md-4 text-md-start p-2">
                 <input type="submit" value="Login" class="btn btn-primary btn-hover-effect" />
             </div>
-             <div class="log-btn">
-              <a href="/Contractor/Register" class="btn btn-hover-effect">I Don't Have An Account</a>
-             </div>
-            <div class="home-btn">
-                    <a href="/Home/Index" class="btn btn-hover-effect">Back to Home</a>
+                    <div class="col-md-4 text-md-center p-2">
+                <a href="/Contractor/Register" class="btn btn-hover-effect">Create An Account</a>
+            </div>
+                    <div class="col-md-4 text-md-end p-2">
+                <a href="/Home/Index" class="btn btn-hover-effect">Back to Home</a>
+            </div>
             </div>
         </form>
     </div>
@@ -90,11 +92,7 @@
         background-size: cover;
         background-position: center;
     }
-
-    .col-md-4 {
-        width: 600px;
-    }
-
+        
     .btn {
         background-color: #8C4303;
         border: 1px solid aliceblue;
