@@ -52,7 +52,7 @@ namespace ContractorSwap.Controllers
                     .ToListAsync();
 
             return View(jobListings);
-
+            
         }
 
         // GET: JobListing/Details/5
@@ -65,18 +65,23 @@ namespace ContractorSwap.Controllers
             {
 
                 var jobListingModel = await _context.Jobs
-                   // .Include(x => x.Contractor)
-                   // .Where(x => x.Contractor.UserName == userName && x.Contractor.Password == password)
-                    .Include(x => x.Applications)                   
-                    .FirstOrDefaultAsync(/*m => m.Id == id*/);
+                    .Include(x => x.Contractor)
+                    .Where(x => x.Contractor.UserName == userName && x.Contractor.Password == password)
+                    .Include(x => x.Applications)
+                    
+                    
+                    
+                    //.Where(x=> x. == id)
+                    .FirstOrDefaultAsync(m => m.Id == id);
                 return View(jobListingModel);
             }
             else
             {
                 // Redirect or display an error message if the cookies are not set
-                return RedirectToAction("Create", "Contractor"); // Replace with appropriate action and controller names
+                return RedirectToAction("Register", "Contractor"); // Replace with appropriate action and controller names
             }
         }
+      
         public async Task<IActionResult> Details(int? id)
         {
             string userName = Request.Cookies["UserCookie"];
