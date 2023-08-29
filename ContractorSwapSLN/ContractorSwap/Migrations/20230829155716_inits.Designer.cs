@@ -12,13 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContractorSwap.Migrations
 {
     [DbContext(typeof(DataContext))]
-<<<<<<<< HEAD:ContractorSwapSLN/ContractorSwap/Migrations/20230828182656_initssd.Designer.cs
-    [Migration("20230828182656_initssd")]
-    partial class initssd
-========
-    [Migration("20230828115008_initial")]
-    partial class initial
->>>>>>>> f3a7d28f7b86e62984e763b60c8263f9327b575b:ContractorSwapSLN/ContractorSwap/Migrations/20230828115008_initial.Designer.cs
+    [Migration("20230829155716_inits")]
+    partial class inits
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -293,7 +288,7 @@ namespace ContractorSwap.Migrations
                     b.HasOne("ContractorSwap.Models.JobListingModel", "JobListing")
                         .WithMany()
                         .HasForeignKey("JobListingId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ContractorSwap.Models.JobListingModel", null)

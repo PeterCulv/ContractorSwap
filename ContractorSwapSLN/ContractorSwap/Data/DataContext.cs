@@ -20,7 +20,7 @@ namespace ContractorSwap.Data
                 .HasOne(a => a.JobListing)
                 .WithMany()
                 .HasForeignKey(a => a.JobListingId)
-                .OnDelete(DeleteBehavior.NoAction);
+                /*.OnDelete(DeleteBehavior.NoAction)*/;
 
              modelBuilder.Entity<ApplicationModel>()
                 .HasOne(a => a.Contractor)
