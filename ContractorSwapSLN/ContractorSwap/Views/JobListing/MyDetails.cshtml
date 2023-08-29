@@ -81,7 +81,7 @@
             <dd class="col-lg-8">
             @Html.DisplayFor(model => model.Contractor.Name)
         </dd>
-        <hr/>
+        @*<hr/>
         <div class="m-1">
         <p id="applicationCountTitle">Applications: @Model.Applications.Count()</p>
         @foreach(var app in Model.Applications)
@@ -101,9 +101,13 @@
                 </div>
             </div>
         }
-        </div>
+            </div>*@
         </dl>
-
+        <div class="row m-2 justify-content-center">
+            <div class="col-lg-4 p-2 text-center">
+                <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-display">View Applications</a>
+            </div>
+        </div>
         <div class="row m-2 justify-content-between">
             <div class="col-lg-4 p-2 text-center">        
                 <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-display">Edit</a>
