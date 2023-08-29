@@ -83,14 +83,14 @@
                 <div class="form-group-btn">
                         <input type="submit" value="Create" class="btn btn-primary btn-hover-effect" />
                 </div>
-                <div>
-                    <a asp-action="MyIndex">Back to My Jobs</a>
-                </div>
+                    <div class="home-btn">
+                        <a href="/JobListing/MyIndex" class="btn btn-primary btn-hover-effect">Back to My Jobs</a>
+                    </div>
         </form>
         </div>
     </div>
 </div>
-
+</div>
 
 
 @section Scripts {
@@ -98,7 +98,8 @@
 }
 <style>
 
-   
+    
+
     h1 {
         margin-top: 40px;
         display: flex;
@@ -119,7 +120,10 @@
         opacity: 95%;
         color: #FFFBE0;
     }
-
+    .home-btn{
+        display: flex;
+        justify-content: center;
+    }
    
 
     body {
