@@ -7,9 +7,8 @@
 <h1>Create a Job Listing!</h1>
 
 
-<hr />
-<div class="row">
-    <div class="create-page">
+
+<div class="row justify-content-center m-4">    
     <div class="col-md-4">
         <div class="app-form-container">
         <form asp-action="Create">
@@ -84,28 +83,22 @@
                 <div class="form-group-btn">
                         <input type="submit" value="Create" class="btn btn-primary btn-hover-effect" />
                 </div>
+                <div>
+                    <a asp-action="MyIndex">Back to My Jobs</a>
+                </div>
         </form>
         </div>
     </div>
 </div>
-</div>
-<div>
-    <a asp-action="MyIndex">Back to My Jobs</a>
-</div>
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
 <style>
 
-    .create-page {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin-top: -200px;
-    }
-
+   
     h1 {
         margin-top: 40px;
         display: flex;
