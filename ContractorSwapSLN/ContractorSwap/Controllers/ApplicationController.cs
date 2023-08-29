@@ -48,6 +48,23 @@ namespace ContractorSwap.Controllers
             }
 
         }
+        public async Task<IActionResult> JobToIndex(int id)
+        {
+            string userName = Request.Cookies["UserCookie"];
+            string password = Request.Cookies["PasswordCookie"];
+            if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
+            {
+                var applications = await _context.Applications.Include(x=> x.JobListing).Include(x=>x.Contractor).Where(x=> x.Id == id).ToListAsync();
+                return View(applications);
+
+            }
+            else
+            {
+                // Redirect or display an error message if the cookies are not set
+                return RedirectToAction("Register", "Contractor"); // Replace with appropriate action and controller names
+            }
+
+        }
 
         // GET: Application/Details/5
         public async Task<IActionResult> Details(int? id)
