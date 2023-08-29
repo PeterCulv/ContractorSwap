@@ -4,12 +4,14 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Edit Your Job</h1>
 
-<h4>JobListingModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+
+<div class="p-4 rounded">
+    <div class="container-lg">
+        <div class="row justify-content-center">
+            <div class="col-7">
+                <div class="border border-5 rounded-3  p-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
@@ -84,14 +86,51 @@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
+            <div class="job-btn">
+                <a href="/JobListing/MyIndex" class="btn btn-hover-effect">Back to My Jobs</a>
+            </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="MyIndex">Back to My Jobs</a>
+</div>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+    <style>
+        .job-btn {
+            display: flex;
+            justify-content: center;
+        }
+
+        .border {
+            color: #FFFBE0;
+            opacity: 95%;
+            background-color: #40312C;
+        }
+
+        h1 {
+            display: flex;
+            justify-content:center;
+            color: #FFFBE0;
+        }
+
+        .btn {
+            color: #FFF7EF;
+            background-color: #8C4303;
+            border: 1px solid aliceblue;
+        }
+
+        .btn-hover-effect {
+            background-color: #8C4303;
+            border: 1px solid aliceblue;
+            transition: transform 1s;
+        }
+
+            .btn-hover-effect:hover {
+                background-color: #8C4303;
+                border: 1px solid aliceblue;
+                transform: scale(1.1);
+            }
+    </style>
