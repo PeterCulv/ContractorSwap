@@ -66,12 +66,48 @@ namespace ContractorSwap.Data
                     Password = "francis456",                    
 
 
-                }) ;
-              modelBuilder.Entity<JobListingModel>().HasData(
+                },
+                new ContractorModel()
+                {
+                    Id = 3,
+                    Name = "Stone Chalmers",
+                    Carpentery = false,
+                    Plumbing = true,
+                    General = false,
+                    Electrical = true,
+                    Address = "8017 Yager Way",
+                    City = "Columbus",
+                    State = "Ohio",
+                    Zip = "55555",
+                    Email = "stonechalmers49@aol.com",
+                    Phone = "2093541980",
+                    UserName = "StoneyC",
+                    Password = "ChalStone1975",
+                },
+                new ContractorModel()
+                {
+                    Id = 4,
+                    Name = "Tim Smith",
+                    Carpentery = true,
+                    Plumbing = false,
+                    General = true,
+                    Electrical = true,
+                    Address = "144 Spruce St",
+                    City = "Columbus",
+                    State = "Ohio",
+                    Zip = "55555",
+                    Email = "smittyman12@aol.com",
+                    Phone = "8179314754",
+                    UserName = "TimmySmit",
+                    Password = "tinmansmitty",
+
+
+                });
+            modelBuilder.Entity<JobListingModel>().HasData(
                  new JobListingModel()
                  {
                      Id = 1,
-                     Name = "Test Job",
+                     Name = "Ceiling Fan Install",
                      Date = new DateTime(2019, 05, 09),
                      CompletionDate = new DateTime(2023, 09, 23),
                      Address = "baluga",
@@ -88,7 +124,7 @@ namespace ContractorSwap.Data
                  new JobListingModel()
                  {
                      Id = 2,
-                     Name = "Secondary Job",
+                     Name = "Tiny Hot Tub For Dog",
                      Date = new DateTime(2023, 06, 09),
                      CompletionDate = new DateTime(2023, 08, 30),
                      Address = "baluga",
@@ -100,9 +136,95 @@ namespace ContractorSwap.Data
                      General = true,
                      Electrical = true,
                      Description = "Install a hot tub for a Chihuaha",
-                     ContractorId = 2
+                     ContractorId = 2,
+                 
+                 },
+                 new JobListingModel()
+                 {
+                     Id = 3,
+                     Name = "Master Bathroom Shower",
+                     Date = new DateTime(2023, 08, 15),
+                     CompletionDate = new DateTime(2023, 09, 05),
+                     Address = "809 ",
+                     City = "Columbus",
+                     State = "Ohio",
+                     Zip = "55555",
+                     Carpentery = false,
+                     Plumbing = true,
+                     General = false,
+                     Electrical = true,
+                     Description = "Install new shower in master bathroom.",
+                     ContractorId = 3,
+                 },
+                 new JobListingModel()
+                 {
+                     Id = 4,
+                     Name = "Install Whole Home Sound System",
+                     Date = new DateTime(2023, 07, 29),
+                     CompletionDate = new DateTime(2023, 08, 23),
+                     Address = "19 BelAir St",
+                     City = "Columbus",
+                     State = "Ohio",
+                     Zip = "55555",
+                     Carpentery = false,
+                     Plumbing = true,
+                     General = false,
+                     Electrical = true,
+                     Description = "Install home sound system throughout the house. I have all the new speakers on site.",
+                     ContractorId = 3
+                 },
+                 new JobListingModel()
+                 {
+                     Id = 5,
+                     Name = "Rewire House",
+                     Date = new DateTime(2023, 06, 09),
+                     CompletionDate = new DateTime(2023, 08, 30),
+                     Address = "86 Elm Dr",
+                     City = "Columbus",
+                     State = "Ohio",
+                     Zip = "55555",
+                     Carpentery = false,
+                     Plumbing = true,
+                     General = false,
+                     Electrical = true,
+                     Description = "My husband and I recently bought the house and have to rewire the whole house to be up to code.",
+                     ContractorId = 3,
+                 },
+                 new JobListingModel()
+                 {
+                     Id = 6,
+                     Name = "Build She-Shed",
+                     Date = new DateTime(2023, 07, 19),
+                     CompletionDate = new DateTime(2023, 08, 02),
+                     Address = "651 Oak St",
+                     City = "Columbus",
+                     State = "Ohio",
+                     Zip = "55555",
+                     Carpentery = false,
+                     Plumbing = false,
+                     General = true,
+                     Electrical = false,
+                     Description = "I need a 24 x 24 shed built so I have a place for my yoga.",
+                     ContractorId = 1
+                 },
+                 new JobListingModel()
+                 {
+                     Id = 7,
+                     Name = "Outdoor Grill",
+                     Date = new DateTime(2023, 07, 09),
+                     CompletionDate = new DateTime(2023, 08, 30),
+                     Address = "305 Center Ct",
+                     City = "Columbus",
+                     State = "Ohio",
+                     Zip = "55555",
+                     Carpentery = true,
+                     Plumbing = false,
+                     General = true,
+                     Electrical = true,
+                     Description = "I want a 20 x 20 outdoor grill with a bar.",
+                     ContractorId = 4,
                  });
-             modelBuilder.Entity<ApplicationModel>().HasData(
+            modelBuilder.Entity<ApplicationModel>().HasData(
                  new ApplicationModel()
                  {
                      Id = 1,
