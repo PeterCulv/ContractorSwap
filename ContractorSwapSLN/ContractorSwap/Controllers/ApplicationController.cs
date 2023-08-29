@@ -32,8 +32,30 @@ namespace ContractorSwap.Controllers
             string password = Request.Cookies["PasswordCookie"];
             if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
             {
-                var applications = await _context.Applications.Include(a=>a.JobListing).Include(a => a.Contractor).Where(x => x.Contractor.UserName == userName && x.Contractor.Password == password).ToListAsync(); ;
+                var applications = await _context.Applications
+                    .Include(a=>a.JobListing)
+                    .ThenInclude(p => p.Contractor)
+                    .Include(a => a.Contractor)
+                    .Where(x => x.Contractor.UserName == userName && x.Contractor.Password == password)
+                    .ToListAsync();
             return View(applications);
+
+            }
+            else
+            {
+                // Redirect or display an error message if the cookies are not set
+                return RedirectToAction("Register", "Contractor"); // Replace with appropriate action and controller names
+            }
+
+        }
+        public async Task<IActionResult> JobToIndex(int id)
+        {
+            string userName = Request.Cookies["UserCookie"];
+            string password = Request.Cookies["PasswordCookie"];
+            if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
+            {
+                var applications = await _context.Applications.Include(x=> x.JobListing).Include(x=>x.Contractor).Where(x=> x.Id == id).ToListAsync();
+                return View(applications);
 
             }
             else
@@ -86,6 +108,9 @@ namespace ContractorSwap.Controllers
                 ContractorModel contractor = new ContractorModel();
                 contractor = _context.Contractors.Where(x => x.UserName == userName && x.Password == password).FirstOrDefault();
                 applicationModel.ContractorId = contractor.Id;
+             //   JobListingModel job = new JobListingModel();
+             //   job.Id = applicationModel.JobListingId;
+             //  job.Applications.Add(applicationModel);
                
                 
                 _context.Applications.Add(applicationModel);

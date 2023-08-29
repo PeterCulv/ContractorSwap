@@ -1,29 +1,71 @@
 ﻿@model IEnumerable<ContractorSwap.Models.JobListingModel>
-
 @{
     ViewData["Title"] = "Index";
 }
-@{
-    bool carpentry = true;
-    bool plumbing = true;
-    bool general = true;
-    bool electrical = true;
-}
+
 <body class="bg-image" id="JobListingIndexPage">
     <div class="row justify-content-center">
-        <div class="col-md-4 text-center mt-4 mb-4" id="JobListingIndexTitle">
+        <div class="col-sm-6 col-md-4 text-center mt-4 mb-4" id="JobListingIndexTitle">
             <h1 id="JobListingsTitleText"style="color: #403732; font-weight: 700">Job Listings</h1>
 
         </div>
+    </div>  
+    @{
+        bool carpentryFilter = true;
+        bool plumbingFilter = true;
+        bool generalFilter = true;
+        bool electricalFilter = true;
+    }
+
+    <script>
+        function toggleCarpentry() {
+            carpentryFilter = !carpentryFilter;
+        }
+        function togglePlumbing() {
+            plumbingFilter = !plumbingFilter;
+        }
+        function toggleGeneral() {
+            generalFilter = !generalFilter;
+        }
+        function toggleElectrical() {
+            electricalFilter = !electricalFilter;
+        }
+    </script>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form method="get">
+                <div class="form-group">
+                    <label>Filter by Professions</label>
+                    <div>
+                        <input type="checkbox" id="carpentryCheckbox" onclick="toggleCarpentry()">
+                        <label for="carpentryCheckbox">Carpentry</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="plumbingCheckbox" onclick="togglePlumbing()">
+                        <label for="plumbingCheckbox">Plumbing</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="generalCheckbox" onclick="toggleGeneral()">
+                        <label for="generalCheckbox">General</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="electricalCheckbox" onclick="toggleElectrical()">
+                        <label for="electricalCheckbox">Electrical</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Apply Filters</button>
+            </form>
+        </div>
     </div>
-    <div>
-        <input type="checkbox" />
-        Carpentry: @carpentry Plumbing: @plumbing General: @general Electrical: @electrical
-    </div>
-    
     <div class="row" id="CardListings">
         @foreach (var item in Model) {
-           <div class="card col-4 flex-md-wrap" id="JobListingsCard" style="width: 18rem; margin: 45px; padding: 5px;">
+            @if ((item.Carpentery && carpentryFilter) ||
+           (item.Plumbing && plumbingFilter) ||
+           (item.General && generalFilter) ||
+           (item.Electrical && electricalFilter))
+            {
+                <div class="card col-4 flex-md-wrap" id="JobListingsCard"               
+                style="width: 18rem; margin: 45px; padding: 5px;">
                 <a asp-action="Details" asp-route-id="@item.Id" class="nostyle">
                 <div class="card-container">
                     <img class="card-img-top" id="JobListingsCardImage" src="~/Images/Hi-Res Tools surround.jpg" alt="Job Type Image">
@@ -37,7 +79,10 @@
                 </div>
                 </a>
            </div>
-            }
+           }
+        }
     </div>
+    
+    
 
 </body>
