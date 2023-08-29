@@ -62,7 +62,7 @@
             }
             else
             {
-                <div class="col-lg-5">
+                <div class="col-xl-5 col-lg-12">
                     <h1 class="text-white font-weight-light">Welcome Back!</h1>
                         <p class="text-white h1-ptag">Your expertise fuels our community. Explore opportunities, balance workloads, and foster collaborations through Contractor Swap. Your success is our priority.</p>
                     </div>
@@ -78,36 +78,44 @@
             </div>
         </div>
         <!-- Content Row-->
+        <div class="card-deck">
         <div class="row gx-4 gx-lg-5">
             <div class="col-md-4 mb-5">
-                <div class="card rounded-5 overflow-hidden">
+                    <div class="card h-100 rounded-5 overflow-hidden">
                     <img src="~/img/contractor.jpg" class="card-img-top" />
-                    <div class="card-body">
+                        <div class="card-body" style="margin-bottom: 50px;">
                         <h5 class="card-title text-center">Learn More</h5>
                         <p class="card-text">Learn More about the Creators behind Contractor Swap and our Mission and Goals for the future!</p>
+                            <div class="card-footer text-muted" style="position: absolute; bottom: 0; width: 100%; border: 0; background-color: transparent;">
                         <a asp-controller="Home" asp-action="AboutUs" class="btn btn-secondary align-middle">About Us</a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-5">
-                <div class="card rounded-5 overflow-hidden">
+                    <div class="card h-100 rounded-5 overflow-hidden">
                     <img src="~/img/jobswap.jpg" class="card-img-top" />
-                    <div class="card-body">
+                        <div class="card-body" style="margin-bottom: 50px;">
                         <h5 class="card-title text-center">Post Your Job Opportunities</h5>
                         <p class="card-text">Looking for Extra Hands? Post Your Jobs and Connect with Skilled Contractors Ready to Fill Your Gaps!</p>
+                            <div class="card-footer text-muted" style="position: absolute; bottom: 0; width: 100%; border: 0; background-color: transparent;">
                         <a asp-controller="JobListing" asp-action="Create" class="btn btn-secondary">Post a Job</a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-5">
-                <div class="card rounded-5 overflow-hidden ">
+                    <div class="card h-100 rounded-5 overflow-hidden">
                     <img src="~/img/jobsearch.jpg" class="card-img-top" />
-                    <div class="card-body">
+                            <div class="card-body" style="margin-bottom: 50px;">
                         <h5 class="card-title text-center">Explore Job Listings</h5>
                         <p class="card-text">Ready to Get to Work? Explore Job Listings <br />and Find Your Next Contracting Opportunity Today!</p>
+                            <div class="card-footer text-muted" style="position: absolute; bottom: 0; width: 100%; border: 0; background-color: transparent;">
                         <a asp-controller="JobListing" asp-action="Index" class="btn btn-secondary">Search Jobs</a>
+                        </div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>

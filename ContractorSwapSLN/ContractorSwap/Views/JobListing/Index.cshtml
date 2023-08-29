@@ -10,7 +10,7 @@
 
         </div>
     </div>  
-    @{
+    @*@{
         bool carpentryFilter = true;
         bool plumbingFilter = true;
         bool generalFilter = true;
@@ -56,13 +56,13 @@
                 <button type="submit" class="btn btn-primary">Apply Filters</button>
             </form>
         </div>
-    </div>
+    </div>*@
     <div class="row" id="CardListings">
         @foreach (var item in Model) {
-            @if ((item.Carpentery && carpentryFilter) ||
+            @*@if ((item.Carpentery && carpentryFilter) ||
            (item.Plumbing && plumbingFilter) ||
            (item.General && generalFilter) ||
-           (item.Electrical && electricalFilter))
+           (item.Electrical && electricalFilter))*@
             {
                 <div class="card col-4 flex-md-wrap" id="JobListingsCard"               
                 style="width: 18rem; margin: 45px; padding: 5px;">
@@ -80,7 +80,7 @@
                 </a>
            </div>
            }
-        }
+           }
     </div>
     
     
