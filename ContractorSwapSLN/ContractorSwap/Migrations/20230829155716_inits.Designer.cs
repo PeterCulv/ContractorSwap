@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContractorSwap.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230829145937_initial")]
-    partial class initial
+    [Migration("20230829155716_inits")]
+    partial class inits
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -288,7 +288,7 @@ namespace ContractorSwap.Migrations
                     b.HasOne("ContractorSwap.Models.JobListingModel", "JobListing")
                         .WithMany()
                         .HasForeignKey("JobListingId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ContractorSwap.Models.JobListingModel", null)

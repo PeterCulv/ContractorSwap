@@ -71,7 +71,6 @@ namespace ContractorSwap.Models
         [ForeignKey("ContractorId")]
         public int ContractorId { get; set; }
         public virtual ContractorModel? Contractor { get; set; }
-
         public virtual ICollection<ApplicationModel>? Applications { get; set; }  //  = new List<ApplicationModel>();
     }
 }
