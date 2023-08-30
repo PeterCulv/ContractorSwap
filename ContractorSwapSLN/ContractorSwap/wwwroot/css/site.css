@@ -244,6 +244,20 @@ a.nostyle:visited{
 .btn-display:active {
     border:2px solid white;
 }
+.btn-cancel {
+    position: relative;
+    background-color: #F2D1B3;
+    color: #403732;
+    border: 2px solid #F2D1B3;
+}
+.btn-cancel:hover {
+    background-color: #Ba331c;
+    color: #FFFFFF;
+}
+.btn-cancel:active {
+    border: 2px solid white;
+
+}
 .detailsTitle {
     background-color: #F2D1B3;
     opacity: 0.75;
@@ -255,4 +269,11 @@ a.nostyle:visited{
     color: #403732;
     font-weight: 700;
     font-size: 51px;
+}
+.tableBodyText {
+    color: #F2D1B3;
+}
+.applicationTableHeaderText {
+    color: #F2D1B3;
+    font-size:20px;
 }
