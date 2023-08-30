@@ -108,8 +108,8 @@ namespace ContractorSwap.Data
                  {
                      Id = 1,
                      Name = "Ceiling Fan Install",
-                     Date = new DateTime(2019, 05, 09),
-                     CompletionDate = new DateTime(2023, 09, 23),
+                     Date = new DateTime(2023, 08, 09),
+                     CompletionDate = new DateTime(2023, 09, 09),
                      Address = "baluga",
                      City = "Columbus",
                      State = "Ohio",
@@ -125,8 +125,8 @@ namespace ContractorSwap.Data
                  {
                      Id = 2,
                      Name = "Tiny Hot Tub For Dog",
-                     Date = new DateTime(2023, 06, 09),
-                     CompletionDate = new DateTime(2023, 08, 30),
+                     Date = new DateTime(2023, 08, 23),
+                     CompletionDate = new DateTime(2023, 08, 24),
                      Address = "baluga",
                      City = "Columbus",
                      State = "Ohio",
