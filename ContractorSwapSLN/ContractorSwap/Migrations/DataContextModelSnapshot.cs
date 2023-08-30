@@ -72,7 +72,7 @@ namespace ContractorSwap.Migrations
                         {
                             Id = 2,
                             Bid = 800.0,
-                            ContractorId = 1,
+                            ContractorId = 3,
                             Date = new DateTime(2023, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             JobListingId = 2,
                             accepted = false
@@ -81,7 +81,7 @@ namespace ContractorSwap.Migrations
                         {
                             Id = 3,
                             Bid = 1200.0,
-                            ContractorId = 3,
+                            ContractorId = 1,
                             Date = new DateTime(2023, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             JobListingId = 4,
                             accepted = false
@@ -99,7 +99,7 @@ namespace ContractorSwap.Migrations
                         {
                             Id = 5,
                             Bid = 850.0,
-                            ContractorId = 3,
+                            ContractorId = 4,
                             Date = new DateTime(2023, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             JobListingId = 3,
                             accepted = false
@@ -137,7 +137,7 @@ namespace ContractorSwap.Migrations
                             Bid = 750.0,
                             ContractorId = 4,
                             Date = new DateTime(2023, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            JobListingId = 3,
+                            JobListingId = 6,
                             accepted = false
                         },
                         new
@@ -350,9 +350,9 @@ namespace ContractorSwap.Migrations
                             Address = "baluga",
                             Carpentery = false,
                             City = "Columbus",
-                            CompletionDate = new DateTime(2023, 9, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CompletionDate = new DateTime(2023, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ContractorId = 1,
-                            Date = new DateTime(2019, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 8, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Ceiling fan installation: Master Bedroom",
                             Electrical = false,
                             General = true,
@@ -367,9 +367,9 @@ namespace ContractorSwap.Migrations
                             Address = "baluga",
                             Carpentery = false,
                             City = "Columbus",
-                            CompletionDate = new DateTime(2023, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CompletionDate = new DateTime(2023, 8, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ContractorId = 2,
-                            Date = new DateTime(2023, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Install a hot tub for a Chihuaha",
                             Electrical = true,
                             General = true,

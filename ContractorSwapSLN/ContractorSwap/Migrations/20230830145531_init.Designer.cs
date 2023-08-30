@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContractorSwap.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230829155716_inits")]
-    partial class inits
+    [Migration("20230830145531_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,10 +74,82 @@ namespace ContractorSwap.Migrations
                         new
                         {
                             Id = 2,
-                            Bid = 5800.0,
-                            ContractorId = 1,
+                            Bid = 800.0,
+                            ContractorId = 3,
                             Date = new DateTime(2023, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             JobListingId = 2,
+                            accepted = false
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Bid = 1200.0,
+                            ContractorId = 1,
+                            Date = new DateTime(2023, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobListingId = 4,
+                            accepted = false
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Bid = 5800.0,
+                            ContractorId = 3,
+                            Date = new DateTime(2023, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobListingId = 5,
+                            accepted = false
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Bid = 850.0,
+                            ContractorId = 4,
+                            Date = new DateTime(2023, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobListingId = 3,
+                            accepted = false
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Bid = 3350.0,
+                            ContractorId = 1,
+                            Date = new DateTime(2023, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobListingId = 7,
+                            accepted = false
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Bid = 825.0,
+                            ContractorId = 2,
+                            Date = new DateTime(2023, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobListingId = 3,
+                            accepted = false
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Bid = 875.0,
+                            ContractorId = 1,
+                            Date = new DateTime(2023, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobListingId = 3,
+                            accepted = false
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Bid = 750.0,
+                            ContractorId = 4,
+                            Date = new DateTime(2023, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobListingId = 6,
+                            accepted = false
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Bid = 5800.0,
+                            ContractorId = 4,
+                            Date = new DateTime(2023, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobListingId = 6,
                             accepted = false
                         });
                 });
@@ -176,6 +248,40 @@ namespace ContractorSwap.Migrations
                             State = "Ohio",
                             UserName = "frantheman",
                             Zip = "55555"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "8017 Yager Way",
+                            Carpentery = false,
+                            City = "Columbus",
+                            Electrical = true,
+                            Email = "stonechalmers49@aol.com",
+                            General = false,
+                            Name = "Stone Chalmers",
+                            Password = "ChalStone1975",
+                            Phone = "2093541980",
+                            Plumbing = true,
+                            State = "Ohio",
+                            UserName = "StoneyC",
+                            Zip = "55555"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "144 Spruce St",
+                            Carpentery = true,
+                            City = "Columbus",
+                            Electrical = true,
+                            Email = "smittyman12@aol.com",
+                            General = true,
+                            Name = "Tim Smith",
+                            Password = "tinmansmitty",
+                            Phone = "8179314754",
+                            Plumbing = false,
+                            State = "Ohio",
+                            UserName = "TimmySmit",
+                            Zip = "55555"
                         });
                 });
 
@@ -247,13 +353,13 @@ namespace ContractorSwap.Migrations
                             Address = "baluga",
                             Carpentery = false,
                             City = "Columbus",
-                            CompletionDate = new DateTime(2023, 9, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CompletionDate = new DateTime(2023, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ContractorId = 1,
-                            Date = new DateTime(2019, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 8, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Ceiling fan installation: Master Bedroom",
                             Electrical = false,
                             General = true,
-                            Name = "Test Job",
+                            Name = "Ceiling Fan Install",
                             Plumbing = false,
                             State = "Ohio",
                             Zip = "55555"
@@ -264,13 +370,98 @@ namespace ContractorSwap.Migrations
                             Address = "baluga",
                             Carpentery = false,
                             City = "Columbus",
-                            CompletionDate = new DateTime(2023, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CompletionDate = new DateTime(2023, 8, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ContractorId = 2,
-                            Date = new DateTime(2023, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Install a hot tub for a Chihuaha",
                             Electrical = true,
                             General = true,
-                            Name = "Secondary Job",
+                            Name = "Tiny Hot Tub For Dog",
+                            Plumbing = false,
+                            State = "Ohio",
+                            Zip = "55555"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "809 ",
+                            Carpentery = false,
+                            City = "Columbus",
+                            CompletionDate = new DateTime(2023, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ContractorId = 3,
+                            Date = new DateTime(2023, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Install new shower in master bathroom.",
+                            Electrical = true,
+                            General = false,
+                            Name = "Master Bathroom Shower",
+                            Plumbing = true,
+                            State = "Ohio",
+                            Zip = "55555"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "19 BelAir St",
+                            Carpentery = false,
+                            City = "Columbus",
+                            CompletionDate = new DateTime(2023, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ContractorId = 3,
+                            Date = new DateTime(2023, 7, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Install home sound system throughout the house. I have all the new speakers on site.",
+                            Electrical = true,
+                            General = false,
+                            Name = "Install Whole Home Sound System",
+                            Plumbing = true,
+                            State = "Ohio",
+                            Zip = "55555"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Address = "86 Elm Dr",
+                            Carpentery = false,
+                            City = "Columbus",
+                            CompletionDate = new DateTime(2023, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ContractorId = 3,
+                            Date = new DateTime(2023, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "My husband and I recently bought the house and have to rewire the whole house to be up to code.",
+                            Electrical = true,
+                            General = false,
+                            Name = "Rewire House",
+                            Plumbing = true,
+                            State = "Ohio",
+                            Zip = "55555"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Address = "651 Oak St",
+                            Carpentery = false,
+                            City = "Columbus",
+                            CompletionDate = new DateTime(2023, 8, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ContractorId = 1,
+                            Date = new DateTime(2023, 7, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "I need a 24 x 24 shed built so I have a place for my yoga.",
+                            Electrical = false,
+                            General = true,
+                            Name = "Build She-Shed",
+                            Plumbing = false,
+                            State = "Ohio",
+                            Zip = "55555"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Address = "305 Center Ct",
+                            Carpentery = true,
+                            City = "Columbus",
+                            CompletionDate = new DateTime(2023, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ContractorId = 4,
+                            Date = new DateTime(2023, 7, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "I want a 20 x 20 outdoor grill with a bar.",
+                            Electrical = true,
+                            General = true,
+                            Name = "Outdoor Grill",
                             Plumbing = false,
                             State = "Ohio",
                             Zip = "55555"

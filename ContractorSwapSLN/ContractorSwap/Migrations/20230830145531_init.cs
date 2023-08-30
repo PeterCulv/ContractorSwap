@@ -8,11 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ContractorSwap.Migrations
 {
     /// <inheritdoc />
-<<<<<<<< HEAD:ContractorSwapSLN/ContractorSwap/Migrations/20230829150829_init.cs
     public partial class init : Migration
-========
-    public partial class initial : Migration
->>>>>>>> 0ddec84195cd4aa985a5683b4e2410d3ce774141:ContractorSwapSLN/ContractorSwap/Migrations/20230829145937_initial.cs
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -98,7 +94,8 @@ namespace ContractorSwap.Migrations
                         name: "FK_Applications_Jobs_JobListingId",
                         column: x => x.JobListingId,
                         principalTable: "Jobs",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Applications_Jobs_JobListingModelId",
                         column: x => x.JobListingModelId,
@@ -112,7 +109,9 @@ namespace ContractorSwap.Migrations
                 values: new object[,]
                 {
                     { 1, "baluga", true, "Columbus", false, "email", false, "John Deere", "deerebutstillgoated", "5555555555", true, "Ohio", "johndeere123", "55555" },
-                    { 2, "baluga", false, "Columbus", true, "email", true, "Francis Charlery", "francis456", "5555555555", false, "Ohio", "frantheman", "55555" }
+                    { 2, "baluga", false, "Columbus", true, "email", true, "Francis Charlery", "francis456", "5555555555", false, "Ohio", "frantheman", "55555" },
+                    { 3, "8017 Yager Way", false, "Columbus", true, "stonechalmers49@aol.com", false, "Stone Chalmers", "ChalStone1975", "2093541980", true, "Ohio", "StoneyC", "55555" },
+                    { 4, "144 Spruce St", true, "Columbus", true, "smittyman12@aol.com", true, "Tim Smith", "tinmansmitty", "8179314754", false, "Ohio", "TimmySmit", "55555" }
                 });
 
             migrationBuilder.InsertData(
@@ -120,8 +119,13 @@ namespace ContractorSwap.Migrations
                 columns: new[] { "Id", "Address", "Carpentery", "City", "CompletionDate", "ContractorId", "Date", "Description", "Electrical", "General", "Name", "Plumbing", "State", "Zip" },
                 values: new object[,]
                 {
-                    { 1, "baluga", false, "Columbus", new DateTime(2023, 9, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, new DateTime(2019, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ceiling fan installation: Master Bedroom", false, true, "Test Job", false, "Ohio", "55555" },
-                    { 2, "baluga", false, "Columbus", new DateTime(2023, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, new DateTime(2023, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Install a hot tub for a Chihuaha", true, true, "Secondary Job", false, "Ohio", "55555" }
+                    { 1, "baluga", false, "Columbus", new DateTime(2023, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, new DateTime(2023, 8, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ceiling fan installation: Master Bedroom", false, true, "Ceiling Fan Install", false, "Ohio", "55555" },
+                    { 2, "baluga", false, "Columbus", new DateTime(2023, 8, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, new DateTime(2023, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), "Install a hot tub for a Chihuaha", true, true, "Tiny Hot Tub For Dog", false, "Ohio", "55555" },
+                    { 3, "809 ", false, "Columbus", new DateTime(2023, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, new DateTime(2023, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Install new shower in master bathroom.", true, false, "Master Bathroom Shower", true, "Ohio", "55555" },
+                    { 4, "19 BelAir St", false, "Columbus", new DateTime(2023, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, new DateTime(2023, 7, 29, 0, 0, 0, 0, DateTimeKind.Unspecified), "Install home sound system throughout the house. I have all the new speakers on site.", true, false, "Install Whole Home Sound System", true, "Ohio", "55555" },
+                    { 5, "86 Elm Dr", false, "Columbus", new DateTime(2023, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, new DateTime(2023, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "My husband and I recently bought the house and have to rewire the whole house to be up to code.", true, false, "Rewire House", true, "Ohio", "55555" },
+                    { 6, "651 Oak St", false, "Columbus", new DateTime(2023, 8, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, new DateTime(2023, 7, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "I need a 24 x 24 shed built so I have a place for my yoga.", false, true, "Build She-Shed", false, "Ohio", "55555" },
+                    { 7, "305 Center Ct", true, "Columbus", new DateTime(2023, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, new DateTime(2023, 7, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "I want a 20 x 20 outdoor grill with a bar.", true, true, "Outdoor Grill", false, "Ohio", "55555" }
                 });
 
             migrationBuilder.InsertData(
@@ -130,7 +134,15 @@ namespace ContractorSwap.Migrations
                 values: new object[,]
                 {
                     { 1, 750.0, 2, new DateTime(2023, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, null, false },
-                    { 2, 5800.0, 1, new DateTime(2023, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, null, false }
+                    { 2, 800.0, 3, new DateTime(2023, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, null, false },
+                    { 3, 1200.0, 1, new DateTime(2023, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, null, false },
+                    { 4, 5800.0, 3, new DateTime(2023, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, null, false },
+                    { 5, 850.0, 4, new DateTime(2023, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, null, false },
+                    { 6, 3350.0, 1, new DateTime(2023, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, null, false },
+                    { 7, 825.0, 2, new DateTime(2023, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, null, false },
+                    { 8, 875.0, 1, new DateTime(2023, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, null, false },
+                    { 9, 750.0, 4, new DateTime(2023, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, null, false },
+                    { 10, 5800.0, 4, new DateTime(2023, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, null, false }
                 });
 
             migrationBuilder.CreateIndex(
