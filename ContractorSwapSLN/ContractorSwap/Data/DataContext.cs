@@ -230,7 +230,7 @@ namespace ContractorSwap.Data
                      Id = 1,
                      Bid = 750.00,
                      JobListingId = 1,
-                     ContractorId = 2,
+                     ContractorId = 3,
                      Date = new DateTime(2023, 06, 23)
                  },
                  new ApplicationModel()
@@ -270,7 +270,7 @@ namespace ContractorSwap.Data
                      Id = 6,
                      Bid = 3350.00,
                      JobListingId = 7,
-                     ContractorId = 1,
+                     ContractorId = 3,
                      Date = new DateTime(2023, 07, 23)
                  },
                  new ApplicationModel()
@@ -302,7 +302,7 @@ namespace ContractorSwap.Data
                      Id = 10,
                      Bid = 5800.00,
                      JobListingId = 6,
-                     ContractorId = 4,
+                     ContractorId = 3,
                      Date = new DateTime(2023, 07, 23)
                  });
 
