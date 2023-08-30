@@ -476,7 +476,7 @@ namespace ContractorSwap.Migrations
                     b.HasOne("ContractorSwap.Models.JobListingModel", "JobListing")
                         .WithMany()
                         .HasForeignKey("JobListingId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ContractorSwap.Models.JobListingModel", null)
